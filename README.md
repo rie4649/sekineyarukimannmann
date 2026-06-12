@@ -67,8 +67,8 @@ const fortunes=[
 ];
 const bonuses=[
 {multi:0,msg:"本日は省エネ運転です"},{multi:0,msg:"本日は省エネ運転です"},
-{multi:2,msg:"関根ボーナス発動！"},{multi:2,msg:"関根ボーナス発動！"},{multi:2,msg:"関根ボーナス発動！"},{multi:2,msg:"関根ボーナス発動！"},{multi:2,msg:"関根ボーナス発動！"},
-{multi:5,msg:"関根ラッシュ突入！"},{multi:5,msg:"関根ラッシュ突入！"},{multi:5,msg:"関根ラッシュ突入！"},
+{multi:2,msg:"関根ボーナス発動！社長もうなずいています"},{multi:2,msg:"関根ボーナス発動！"},{multi:2,msg:"関根ボーナス発動！"},{multi:2,msg:"関根ボーナス発動！"},{multi:2,msg:"関根ボーナス発動！"},
+{multi:5,msg:"関根ラッシュ突入！もしかしてエスパー？"},{multi:5,msg:"関根ラッシュ突入！神レベルの持ち主"},{multi:5,msg:"関根ラッシュ突入！"},
 {multi:10,msg:"🎉関根フィーバー！！🎉"}
 ];
 let points=parseInt(localStorage.getItem("sekinePoints")||"0");
