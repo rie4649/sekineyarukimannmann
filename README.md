@@ -63,7 +63,7 @@ const fortunes=[
 {title:"🌈末吉",point:0,text:"今日は小さなラッキーが渋滞している日。",comment:"追突注意。"},
 {title:"🌈末吉",point:0,text:"今日はなんとなく全部ちょうどいい日。",comment:"大事件は起きません。"},
 {title:"🌈末吉",point:0,text:"今日はお茶がおいしい日。",comment:"それだけで十分。"},
-{title:"🌈末吉",point:0,text:"今日は特に何もない日。",comment:"それが一番平和です。"}
+{title:"🌈末吉",point:0,text:"今日は特に何もない日。",comment:"それが一番平和ですよ"}
 ];
 const bonuses=[
 {multi:0,msg:"本日は省エネ運転です"},{multi:0,msg:"本日は省エネ運転です"},
