@@ -19,7 +19,7 @@ button:disabled{background:#bbb}
 
 <div class="card">
 <h2>今日の運勢を占う</h2>
-<p>一日一回まで</p>
+<p>欲張らず一日一回まで</p>
 <button id="drawButton" onclick="drawOmikuji()">おみくじを引く</button>
 <div id="todayStatus" class="small"></div>
 </div>
@@ -29,18 +29,18 @@ button:disabled{background:#bbb}
 <div class="card">
 <h2>関根ポイントを貯める</h2>
 <div id="points" class="big">現在ポイント：0pt</div>
-<div id="rank" class="rank">👶関根見習い</div>
+<div id="rank" class="rank">👶関根見習い👶</div>
 <div class="progress"><div id="bar" class="bar"></div></div>
 <div id="nextRank">次のランクまで500pt</div>
 </div>
 
 <div class="card">
 <h3>💳関根ポイントカード</h3>
-🥉500pt　関根ブリキ関根コイン1枚<br><br>
-🥈1000pt　関根鉄A：🎁関根コイン2枚<br><br>
-🥇1500pt　関根CU：🎁関根コイン3枚<br><br>
-🏆3000pt　関根プラチナ：🎁関根コイン4枚<br><br>
-👑5000pt　関根レジェンド：🍜お味噌汁追加券
+🥉500pt　ブリキ：🎁関根コイン1枚<br><br>
+🥈1000pt　ギロ：🎁関根コイン2枚<br><br>
+🥇1500pt　鉄A：🎁関根コイン3枚<br><br>
+🏆3000pt　BS：🎁関根コイン4枚<br><br>
+👑5000pt　CU：🍜お味噌汁追加券
 </div>
 
 <script>
@@ -73,9 +73,9 @@ const bonuses=[
 ];
 let points=parseInt(localStorage.getItem("sekinePoints")||"0");
 function todayKey(){const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
-function getRank(pt){if(pt>=5000)return"👑関根レジェンド";if(pt>=3000)return"🏆関根プラチナ";if(pt>=1500)return"🥇関根CU";if(pt>=1000)return"🥈関根鉄A";if(pt>=500)return"🥉関根ブリキ";return"👶関根見習い"}
+function getRank(pt){if(pt>=5000)return"👑CU";if(pt>=3000)return"🏆関根BS";if(pt>=1500)return"🥇関根CU";if(pt>=1000)return"🥈関根鉄A";if(pt>=500)return"🥉関根ブリキ";return"👶関根見習い"}
 function nextGoal(pt){if(pt<500)return 500;if(pt<1000)return 1000;if(pt<1500)return 1500;if(pt<3000)return 3000;if(pt<5000)return 5000;return 5000}
-function prizeText(pt){if(pt>=5000)return"🎉関根レジェンド達成！豪華景品ゲット！";if(pt>=3000)return"🏆関根プラチナ達成！景品はひみつ！";if(pt>=1500)return"🥇関根CU達成！景品はひみつ！";if(pt>=1000)return"🥈関根鉄A達成！景品はひみつ！";if(pt>=500)return"🥉関根ブリキ達成！お味噌汁追加券ゲット！";return""}
+function prizeText(pt){if(pt>=5000)return"🎉関根CU達成！豪華景品ゲット！";if(pt>=3000)return"🏆関根CU達成！お味噌汁追加！";if(pt>=1500)return"🥇関根CU達成！景品はひみつ！";if(pt>=1000)return"🥈関根鉄A達成！景品はひみつ！";if(pt>=500)return"🥉関根ブリキ達成！お味噌汁追加券ゲット！";return""}
 function updateDisplay(){
 document.getElementById("points").innerHTML="現在ポイント："+points+"pt";
 document.getElementById("rank").innerHTML=getRank(points);
@@ -86,7 +86,7 @@ const lastDraw=localStorage.getItem("sekineLastDraw");
 if(lastDraw===todayKey()){document.getElementById("drawButton").disabled=true;document.getElementById("todayStatus").innerHTML="今日はもう引きました。また明日ね✨"}else{document.getElementById("drawButton").disabled=false;document.getElementById("todayStatus").innerHTML="毎日1回チャレンジできます✨"}
 }
 function drawOmikuji(){
-if(localStorage.getItem("sekineLastDraw")===todayKey()){document.getElementById("result").innerHTML="😊今日はもう引いています！<br>また明日チャレンジしてね✨";return}
+if(localStorage.getItem("sekineLastDraw")===todayKey()){document.getElementById("result").innerHTML="😊欲張りさん！今日はもう引いていますよ！！<br>また明日チャレンジしてね✨";return}
 const beforeRank=getRank(points);
 const fortune=fortunes[Math.floor(Math.random()*fortunes.length)];
 const bonus=bonuses[Math.floor(Math.random()*bonuses.length)];
