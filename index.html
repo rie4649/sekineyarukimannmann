@@ -29,7 +29,7 @@ button:disabled{background:#bbb}
 <div class="card">
 <h2>関根ポイントを貯める</h2>
 <div id="points" class="big">現在ポイント：0pt</div>
-<div id="rank" class="rank">👶関根見習い👶</div>
+<div id="rank" class="rank">👶関根見習い👶👶</div>
 <div class="progress"><div id="bar" class="bar"></div></div>
 <div id="nextRank">次のランクまで500pt</div>
 </div>
@@ -73,9 +73,9 @@ const bonuses=[
 ];
 let points=parseInt(localStorage.getItem("sekinePoints")||"0");
 function todayKey(){const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
-function getRank(pt){if(pt>=5000)return"👑CU";if(pt>=3000)return"🏆関根BS";if(pt>=1500)return"🥇関根CU";if(pt>=1000)return"🥈関根鉄A";if(pt>=500)return"🥉関根ブリキ";return"👶関根見習い"}
+function getRank(pt){if(pt>=5000)return"👑CU";if(pt>=3000)return"🏆BS";if(pt>=1500)return"🥇CU";if(pt>=1000)return"🥈鉄A";if(pt>=500)return"🥉関根ブリキ";return"👶関根見習い"}
 function nextGoal(pt){if(pt<500)return 500;if(pt<1000)return 1000;if(pt<1500)return 1500;if(pt<3000)return 3000;if(pt<5000)return 5000;return 5000}
-function prizeText(pt){if(pt>=5000)return"🎉関根CU達成！豪華景品ゲット！";if(pt>=3000)return"🏆関根CU達成！お味噌汁追加！";if(pt>=1500)return"🥇関根CU達成！景品はひみつ！";if(pt>=1000)return"🥈関根鉄A達成！景品はひみつ！";if(pt>=500)return"🥉関根ブリキ達成！お味噌汁追加券ゲット！";return""}
+function prizeText(pt){if(pt>=5000)return"🎉CU達成！豪華景品ゲット！";if(pt>=3000)return"🏆CU達成！お味噌汁追加！";if(pt>=1500)return"🥇CU達成！景品はひみつ！";if(pt>=1000)return"🥈関根鉄A達成！景品はひみつ！";if(pt>=500)return"🥉関根ブリキ達成！お味噌汁追加券ゲット！";return""}
 function updateDisplay(){
 document.getElementById("points").innerHTML="現在ポイント："+points+"pt";
 document.getElementById("rank").innerHTML=getRank(points);
