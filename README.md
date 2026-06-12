@@ -36,11 +36,11 @@ button:disabled{background:#bbb}
 
 <div class="card">
 <h3>💳関根ポイントカード</h3>
-🥉500pt　関根ブリキ関根コイン1枚<br><br>
-🥈1000pt　関根鉄A：🎁関根コイン2枚<br><br>
-🥇1500pt　関根CU：🎁関根コイン3枚<br><br>
-🏆3000pt　関根プラチナ：🎁関根コイン4枚<br><br>
-👑5000pt　関根レジェンド：🍜お味噌汁追加券
+🥉500pt　ブリキ：🎁関根コイン1枚<br><br>
+🥈1000pt　ギロ：🎁関根コイン2枚<br><br>
+🥇1500pt　鉄A：🎁関根コイン3枚<br><br>
+🏆3000pt　BS：🎁関根コイン4枚<br><br>
+👑5000pt　CU：🎁お味噌汁追加券
 </div>
 
 <script>
