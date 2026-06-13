@@ -24,7 +24,9 @@ button:disabled{background:#bbb}
 <div id="todayStatus" class="small"></div>
 </div>
 
-<div id="result" class="card">ポイントをためて毎日元気に過ごしましょう✨</div>
+<div id="result" class="card" style="font-size:14px;">
+ポイントをためて毎日元気に過ごしましょう✨
+</div>
 
 <div class="card">
 <h2>関根ポイントを貯める</h2>
@@ -32,6 +34,9 @@ button:disabled{background:#bbb}
 <div id="rank" class="rank">👶関根見習い👶👶</div>
 <div class="progress"><div id="bar" class="bar"></div></div>
 <div id="nextRank">次のランクまで500pt</div>
+ <div id="pointCard" style="font-size:30px;">
+⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜
+</div>
 </div>
 
 <div class="card">
@@ -40,10 +45,12 @@ button:disabled{background:#bbb}
 <div id="coins" class="big">
 現在コイン：0枚
 </div>
-
+<p id="exchangeStatus">
+🎁 コインを集めて交換しよう
+</p>
 <p>
  <button onclick="exchangeCoin()">
-🎁コイン10枚で関根グッズ交換
+関根コイン10枚で関根グッズ交換
 </button>
 🪙10枚で
 🎁関根グッズプレゼント
@@ -93,9 +100,9 @@ const bonuses=[
 let points=parseInt(localStorage.getItem("sekinePoints")||"0");
 let coins=parseInt(localStorage.getItem("sekineCoins")||"0");  
 function todayKey(){const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
-function getRank(pt){if(pt>=5000)return"👑CU";if(pt>=3000)return"🏆BS";if(pt>=1500)return"🥇CU";if(pt>=1000)return"🥈鉄A";if(pt>=500)return"🥉関根ブリキ";return"👶関根見習い"}
+function getRank(pt){if(pt>=5000)return"👑CU級";if(pt>=3000)return"🏆BS級";if(pt>=1500)return"🥇CU級";if(pt>=1000)return"🥈鉄A級";if(pt>=500)return"🥉ブリキ級";return"👶関根見習い"}
 function nextGoal(pt){if(pt<500)return 500;if(pt<1000)return 1000;if(pt<1500)return 1500;if(pt<3000)return 3000;if(pt<5000)return 5000;return 5000}
-function prizeText(pt){if(pt>=5000)return"🎉CU達成！豪華景品ゲット！";if(pt>=3000)return"🏆CU達成！お味噌汁追加！";if(pt>=1500)return"🥇CU達成！景品はひみつ！";if(pt>=1000)return"🥈関根鉄A達成！景品はひみつ！";if(pt>=500)return"🥉関根ブリキ達成！お味噌汁追加券ゲット！";return""}
+function prizeText(pt){if(pt>=5000)return"🎉CU級達成！関根コイン１０枚ゲット＆お味噌汁追加ゲット";if(pt>=3000)return"🏆CU級達成！関根コイン１０枚ゲット＆お味噌汁追加！";if(pt>=1500)return"🥇CU級達成！関根コイン１０枚ゲット＆お味噌汁追加！";if(pt>=1000)return"🥈鉄A級達成！関根コイン3枚ゲット";if(pt>=500)return"🥉ブリキ級達成！関根コイン１枚ゲット";return""}
 function updateDisplay(){
 document.getElementById("coins").innerHTML="現在コイン："+coins+"枚"; 
 document.getElementById("points").innerHTML="現在ポイント："+points+"pt";
@@ -140,10 +147,11 @@ function exchangeCoin(){
     localStorage.setItem("sekineCoins", coins);
 
     alert("🎁関根グッズプレゼント交換完了！");
-
+document.getElementById("exchangeStatus").innerHTML =
+"🎁交換済み！関根グッズGET！";
     updateDisplay();
-
-  }else{
+}
+  else{
 
     alert("🥲コインが足りません");
 
