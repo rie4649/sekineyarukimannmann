@@ -24,7 +24,7 @@ button:disabled{background:#bbb}
 <div id="todayStatus" class="small"></div>
 </div>
 
-<div id="result" class="card">おみくじを引いてね✨</div>
+<div id="result" class="card">ポイントをためて毎日元気に過ごしましょう✨</div>
 
 <div class="card">
 <h2>関根ポイントを貯める</h2>
@@ -35,12 +35,29 @@ button:disabled{background:#bbb}
 </div>
 
 <div class="card">
+<div class="card">
+<h2>🪙関根コイン交換所</h2>
+
+<div id="coins" class="big">
+現在コイン：0枚
+</div>
+
+<p>
+🪙10枚で
+🎁関根グッズプレゼント
+</p>
+
+<p>
+あと10枚集めて交換しよう✨
+</p>
+
+</div>
 <h3>💳関根ポイントカード</h3>
-🥉500pt　ブリキ：🎁関根コイン1枚<br><br>
-🥈1000pt　ギロ：🎁関根コイン2枚<br><br>
-🥇1500pt　鉄A：🎁関根コイン3枚<br><br>
-🏆3000pt　BS：🎁関根コイン4枚<br><br>
-👑5000pt　CU：🍜お味噌汁追加券
+🥉500pt　ブリキ級：🎁関根コイン1枚ゲット<br><br>
+🥈1000pt　ギロ級：🎁関根コイン2枚ゲット<br><br>
+🥇1500pt　鉄A級：🎁関根コイン3枚ゲット<br><br>
+🏆3000pt　BS級：🎁関根コイン4枚ゲット<br><br>
+👑5000pt　CU級：🍜お味噌汁追加券ゲット
 </div>
 
 <script>
@@ -49,7 +66,7 @@ const fortunes=[
 {title:"🌈超大吉",point:10,text:"今日は冷蔵庫を開けても何を取りに来たか忘れない日。",comment:"関根のヘレンケラー奇跡の人でしょうか"},
 {title:"🌈超大吉",point:10,text:"今日は会計が777円になるかもしれない日。",comment:"今日のあなた、ほぼ優勝！"},
 {title:"🌈大吉",point:5,text:"今日はお祭り気分で一日過ごせる日。",comment:"わっしょい！わっしょい！あなたは胴上げレベルの存在"},
-{title:"🌈大吉",point:5,text:"今日は夕飯が好きなメニューの日。",comment:"あなたの笑顔！配当金発生レベルですよ！"},
+{title:"🌈大吉",point:5,text:"今日は夕飯が好きなメニューの日。",comment:"あなたの笑顔！配当金発生レベルです！"},
 {title:"🌈大吉",point:5,text:"今日のお昼はあなたの好物ばかりの一日。",comment:"あなたの存在、文化遺産"},
 {title:"🌈大吉",point:5,text:"今日は信号が味方してくれる日。",comment:"あなたが出勤しただけでMVP候補です！"},
 {title:"🌈中吉",point:2,text:"今日は誰かがちょっと優しい日。",comment:"よ！あなたの存在感ハリウッドスター！"},
@@ -61,7 +78,7 @@ const fortunes=[
 {title:"🌈小吉",point:1,text:"今日はペンをなくさない日。",comment:"地味にすごい。小さな幸せエンジョイトゥデイ！"},
 {title:"🌈小吉",point:1,text:"今日は靴下が一発で揃う日。",comment:"関根のミスターマジック！みんなが泣いて喜ぶ存在です"},
 {title:"🌈末吉",point:0,text:"今日は小さなラッキーが渋滞している日。",comment:"いい日になる予感しかしない関根の希望の存在です"},
-{title:"🌈末吉",point:0,text:"今日はなんとなく全部ちょうどいい日。",comment:"もしかして伝説の人？"},
+{title:"🌈末吉",point:0,text:"今日はなんとなく全部ちょうどいい日。",comment:"もしかして、あの伝説の人？"},
 {title:"🌈末吉",point:0,text:"今日はお茶がおいしい日。",comment:"あなたがいるだけで眩しい程、社内が明るいです"},
 {title:"🌈末吉",point:0,text:"今日は特に何もない日。",comment:"一発逆転ホームラン狙い！目指せ関根のスター！"}
 ];
@@ -72,11 +89,13 @@ const bonuses=[
 {multi:10,msg:"🎉関根フィーバー！！🎉"}
 ];
 let points=parseInt(localStorage.getItem("sekinePoints")||"0");
+let coins=parseInt(localStorage.getItem("sekineCoins")||"0");  
 function todayKey(){const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
 function getRank(pt){if(pt>=5000)return"👑CU";if(pt>=3000)return"🏆BS";if(pt>=1500)return"🥇CU";if(pt>=1000)return"🥈鉄A";if(pt>=500)return"🥉関根ブリキ";return"👶関根見習い"}
 function nextGoal(pt){if(pt<500)return 500;if(pt<1000)return 1000;if(pt<1500)return 1500;if(pt<3000)return 3000;if(pt<5000)return 5000;return 5000}
 function prizeText(pt){if(pt>=5000)return"🎉CU達成！豪華景品ゲット！";if(pt>=3000)return"🏆CU達成！お味噌汁追加！";if(pt>=1500)return"🥇CU達成！景品はひみつ！";if(pt>=1000)return"🥈関根鉄A達成！景品はひみつ！";if(pt>=500)return"🥉関根ブリキ達成！お味噌汁追加券ゲット！";return""}
 function updateDisplay(){
+document.getElementById("coins").innerHTML="現在コイン："+coins+"枚"; 
 document.getElementById("points").innerHTML="現在ポイント："+points+"pt";
 document.getElementById("rank").innerHTML=getRank(points);
 const goal=nextGoal(points);const remain=Math.max(goal-points,0);
@@ -88,10 +107,18 @@ if(lastDraw===todayKey()){document.getElementById("drawButton").disabled=true;do
 function drawOmikuji(){
 if(localStorage.getItem("sekineLastDraw")===todayKey()){document.getElementById("result").innerHTML="😊欲張りさん！今日はもう引いていますよ！！<br>また明日チャレンジしてね✨";return}
 const beforeRank=getRank(points);
-const fortune=fortunes[Math.floor(Math.random()*fortunes.length)];
+const gain=Math.max(1,fortune.point*bonus.multi);
 const bonus=bonuses[Math.floor(Math.random()*bonuses.length)];
-const gain=fortune.point*bonus.multi;
+const gain=math.max(1,fortune.point*bonus.multi);
 points+=gain;
+ const oldCoins=Math.floor((points-gain)/500);
+
+const newCoins=Math.floor(points/500);
+
+if(newCoins>oldCoins){
+  coins+=newCoins-oldCoins;
+  localStorage.setItem("sekineCoins",coins);
+} 
 localStorage.setItem("sekinePoints",points);
 localStorage.setItem("sekineLastDraw",todayKey());
 const afterRank=getRank(points);
