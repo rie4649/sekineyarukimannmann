@@ -172,9 +172,9 @@ function exchangeCoin(){
     document.getElementById("exchangeStatus").innerHTML =
       "🎁交換済み！関根グッズGET！";
     updateDisplay();
-  }else{
-    alert("テスト");
-  }
+}else{
+  document.getElementById("exchangeStatus").innerHTML="🟡 コインが足りません";
+} 
 }
 updateDisplay();
 </script>
