@@ -165,28 +165,20 @@ document.getElementById("result").innerHTML="<h2>"+fortune.title+"</h2>"+fortune
 updateDisplay();
 }
 updateDisplay();
-
 function exchangeCoin(){
-
   if(coins >= 10){
-
     coins -= 10;
-
     localStorage.setItem("sekineCoins", coins);
-
     alert("🎁関根グッズプレゼント交換完了！");
-document.getElementById("exchangeStatus").innerHTML =
-"🎁交換済み！関根グッズGET！";
+    document.getElementById("exchangeStatus").innerHTML =
+      "🎁交換済み！関根グッズGET！";
     updateDisplay();
-}
-  else{
-
-    alert("🥲コインが足りません");
-
+  }else{
+    alert("🪙コインが足りません");
   }
-
 }
-
+  }
+}
 updateDisplay();
 updateDisplay();
 </script>
