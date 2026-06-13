@@ -153,7 +153,13 @@ function drawOmikuji(){
   const gain=Math.max(1,fortune.point*bonus.multi);
 
   points+=gain;
+points+=gain;
 
+if(fortune.title.includes("超大吉")){
+  alert("🎉🎉🎉 超大吉！！関根フィーバー発動！！ 🎉🎉🎉");
+}
+
+const oldCoins=Math.floor((points-gain)/500);
   const oldCoins=Math.floor((points-gain)/500);
   const newCoins=Math.floor(points/500);
 
