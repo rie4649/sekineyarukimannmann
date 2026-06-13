@@ -57,14 +57,14 @@ button:disabled{background:#bbb}
 <div id="coins" class="big">
 現在コイン：0枚
 </div>
-<div id="coinCard" style="font-size:30px;">
-⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪
+<div id="coinCard" style="font-size:30p;">
+⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
 </div>
 <p id="exchangeStatus">
 🎁 コインを集めて交換しよう
 </p>
 <p>
- <button onclick="exchangeCoin()">
+<button id="exchangeButton" onclick="exchangeCoin()">
 関根コイン１０枚で関根グッズ交換
 
 </p>
@@ -128,6 +128,11 @@ if(coins>=i){
   }
 }
 document.getElementById("coinCard").innerHTML=coinCard;
+if(coins < 10){
+  document.getElementById("exchangeButton").disabled = true;
+}else{
+  document.getElementById("exchangeButton").disabled = false;
+}
  let card="";
 for(let i=1;i<=10;i++){
   if(points>=i*500){
