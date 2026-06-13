@@ -45,13 +45,21 @@ button:disabled{background:#bbb}
 <div id="coins" class="big">
 現在コイン：0枚
 </div>
+let coinCard="";
+for(let i=1;i<=10;i++){
+  if(coins>=i){
+    coinCard+="🪙";
+  }else{
+    coinCard+="□";
+  }
+}
+document.getElementById("coinCard").innerHTML=coinCard;
 <p id="exchangeStatus">
 🎁 コインを集めて交換しよう
 </p>
 <p>
  <button onclick="exchangeCoin()">
-関根コイン10枚で関根グッズ交換
-</button>
+関根コイン１０枚で関根グッズ交換
 
 </p>
 
