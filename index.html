@@ -142,28 +142,40 @@ const lastDraw=localStorage.getItem("sekineLastDraw");
 if(lastDraw===todayKey()){document.getElementById("drawButton").disabled=true;document.getElementById("todayStatus").innerHTML="今日はもう引きました。また明日ね✨"}else{document.getElementById("drawButton").disabled=false;document.getElementById("todayStatus").innerHTML="毎日1回チャレンジできます✨"}
 }
 function drawOmikuji(){
-if(localStorage.getItem("sekineLastDraw")===todayKey()){document.getElementById("result").innerHTML="😊欲張りさん！今日はもう引いていますよ！！<br>また明日チャレンジしてね✨";return}
-const beforeRank=getRank(points);
-const gain=Math.max(1,fortune.point*bonus.multi);
-const bonus=bonuses[Math.floor(Math.random()*bonuses.length)];
-const gain=math.max(1,fortune.point*bonus.multi);
-points+=gain;
- const oldCoins=Math.floor((points-gain)/500);
+  if(localStorage.getItem("sekineLastDraw")===todayKey()){
+    document.getElementById("result").innerHTML="😳 欲張りさん！今日はもう引いていますよ！";
+    return;
+  }
 
-const newCoins=Math.floor(points/500);
+  const fortune=fortunes[Math.floor(Math.random()*fortunes.length)];
+  const bonus=bonuses[Math.floor(Math.random()*bonuses.length)];
+  const beforeRank=getRank(points);
+  const gain=Math.max(1,fortune.point*bonus.multi);
 
-if(newCoins>oldCoins){
-  coins+=newCoins-oldCoins;
-  localStorage.setItem("sekineCoins",coins);
-} 
-localStorage.setItem("sekinePoints",points);
-localStorage.setItem("sekineLastDraw",todayKey());
-const afterRank=getRank(points);
-let rankUp="";
-if(beforeRank!==afterRank){
-  rankUp="<br><br>🎊ランクアップ！🎊<br>"+prizeText(points);
+  points+=gain;
+
+  const oldCoins=Math.floor((points-gain)/500);
+  const newCoins=Math.floor(points/500);
+
+  if(newCoins>oldCoins){
+    coins+=newCoins-oldCoins;
+    localStorage.setItem("sekineCoins",coins);
+  }
+
+  localStorage.setItem("sekinePoints",points);
+  localStorage.setItem("sekineLastDraw",todayKey());
+
+  const afterRank=getRank(points);
+  let rankUp="";
+
+  if(beforeRank!==afterRank){
+    rankUp="<br><br>🎊ランクアップ！🎊<br>"+prizeText(points);
+  }
+
+  document.getElementById("result").innerHTML="<h2>"+fortune.title+"</h2>"+fortune.text+"<br>"+bonus.name+"<br>+"+gain+"pt"+rankUp;
+
+  updateDisplay();
 }
-updateDisplay();
 function exchangeCoin(){
   if(coins >= 10){
     coins -= 10;
