@@ -172,7 +172,7 @@ function drawOmikuji(){
     rankUp="<br><br>🎊ランクアップ！🎊<br>"+prizeText(points);
   }
 
-  document.getElementById("result").innerHTML="<h2>"+fortune.title+"</h2>"+fortune.text+"<br>"+bonus.text+"<br>+"+gain+"pt"+rankUp;
+  document.getElementById("result").innerHTML="<h2>"+fortune.title+"</h2>"+fortune.text+"<br>"+bonus.msg+"<br>+"+gain+"pt"+rankUp;
 
   updateDisplay();
 }
