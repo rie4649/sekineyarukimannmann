@@ -35,7 +35,6 @@ button:disabled{background:#bbb}
 </div>
 
 <div class="card">
-<div class="card">
 <h2>🪙関根コイン交換所</h2>
 
 <div id="coins" class="big">
@@ -43,6 +42,9 @@ button:disabled{background:#bbb}
 </div>
 
 <p>
+ <button onclick="exchangeCoin()">
+🎁コイン10枚で関根グッズ交換
+</button>
 🪙10枚で
 🎁関根グッズプレゼント
 </p>
@@ -57,7 +59,7 @@ button:disabled{background:#bbb}
 🥈1000pt　ギロ級：🎁関根コイン2枚ゲット<br><br>
 🥇1500pt　鉄A級：🎁関根コイン3枚ゲット<br><br>
 🏆3000pt　BS級：🎁関根コイン4枚ゲット<br><br>
-👑5000pt　CU級：🍜お味噌汁追加券ゲット
+👑5000pt　CU級：🎁関根コイン１０枚ゲット＆🍜お味噌汁追加券ゲット
 </div>
 
 <script>
@@ -127,6 +129,29 @@ if(beforeRank!==afterRank){rankUp="<br><br>🎊ランクアップ！🎊<br>"+pr
 document.getElementById("result").innerHTML="<h2>"+fortune.title+"</h2>"+fortune.text+"<br><br>👉 "+fortune.comment+"<br><br>🎁 "+bonus.msg+"<br>倍率："+bonus.multi+"倍<br><br><b class='big'>"+gain+"pt獲得！</b>"+rankUp+"<br><br>💳現在 "+points+"pt";
 updateDisplay();
 }
+updateDisplay();
+
+function exchangeCoin(){
+
+  if(coins >= 10){
+
+    coins -= 10;
+
+    localStorage.setItem("sekineCoins", coins);
+
+    alert("🎁関根グッズプレゼント交換完了！");
+
+    updateDisplay();
+
+  }else{
+
+    alert("🥲コインが足りません");
+
+  }
+
+}
+
+updateDisplay();
 updateDisplay();
 </script>
 </body>
