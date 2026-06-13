@@ -45,15 +45,9 @@ button:disabled{background:#bbb}
 <div id="coins" class="big">
 現在コイン：0枚
 </div>
-let coinCard="";
-for(let i=1;i<=10;i++){
-  if(coins>=i){
-    coinCard+="🪙";
-  }else{
-    coinCard+="□";
-  }
-}
-document.getElementById("coinCard").innerHTML=coinCard;
+<div id="coinCard" style="font-size:30px;">
+□□□□□□□□□□
+</div>
 <p id="exchangeStatus">
 🎁 コインを集めて交換しよう
 </p>
@@ -103,7 +97,7 @@ const bonuses=[
 {multi:10,msg:"🎉関根フィーバー！！🎉"}
 ];
 let points=parseInt(localStorage.getItem("sekinePoints")||"0");
-let coins=parseInt(localStorage.getItem("sekineCoins")||"0");  
+let coins=5; 
 function todayKey(){const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
 function getRank(pt){if(pt>=5000)return"👑CU級";if(pt>=3000)return"🏆BS級";if(pt>=1500)return"🥇CU級";if(pt>=1000)return"🥈鉄A級";if(pt>=500)return"🥉ブリキ級";return"👶関根見習い"}
 function nextGoal(pt){if(pt<500)return 500;if(pt<1000)return 1000;if(pt<1500)return 1500;if(pt<3000)return 3000;if(pt<5000)return 5000;return 5000}
@@ -112,7 +106,16 @@ function updateDisplay(){
 document.getElementById("coins").innerHTML="現在コイン："+coins+"枚"; 
 document.getElementById("points").innerHTML="現在ポイント："+points+"pt";
 document.getElementById("rank").innerHTML=getRank(points);
-let card="";
+let coinCard="";
+for(let i=1;i<=10;i++){
+  if(coins>=i){
+    coinCard+="🪙";
+  }else{
+    coinCard+="□";
+  }
+}
+document.getElementById("coinCard").innerHTML=coinCard;
+ let card="";
 for(let i=1;i<=10;i++){
   if(points>=i*500){
     card+="🟨";
