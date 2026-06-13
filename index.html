@@ -31,7 +31,7 @@ button:disabled{background:#bbb}
 <div class="card">
 <h2>関根ポイントを貯める</h2>
 <div id="points" class="big">現在ポイント：0pt</div>
-<div id="rank" class="rank">👶関根見習い👶👶</div>
+<div id="rank" class="rank">👶関根見習い👶</div>
 <div class="progress"><div id="bar" class="bar"></div></div>
 <div id="nextRank">次のランクまで500pt</div>
  <div id="pointCard" style="font-size:30px;">
@@ -105,6 +105,15 @@ function updateDisplay(){
 document.getElementById("coins").innerHTML="現在コイン："+coins+"枚"; 
 document.getElementById("points").innerHTML="現在ポイント："+points+"pt";
 document.getElementById("rank").innerHTML=getRank(points);
+let card="";
+for(let i=1;i<=10;i++){
+  if(points>=i*500){
+    card+="🟨";
+  }else{
+    card+="⬜";
+  }
+}
+document.getElementById("pointCard").innerHTML=card;
 const goal=nextGoal(points);const remain=Math.max(goal-points,0);
 document.getElementById("nextRank").innerHTML=points>=5000?"👑最高ランク達成中！":"次のランクまで "+remain+"pt";
 document.getElementById("bar").style.width=(points>=5000?100:Math.min((points/goal)*100,100))+"%";
