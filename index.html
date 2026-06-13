@@ -52,7 +52,7 @@ button:disabled{
 <div class="progress"><div id="bar" class="bar"></div></div>
 <div id="nextRank">次のランクまで500pt</div>
 <div id="pointCard" style="font-size:30px;">
-☆☆☆☆☆☆☆☆☆☆
+☆☆☆☆☆☆
 </div>
 </div>
 
@@ -133,7 +133,7 @@ if(coins>=i){
   }
 document.getElementById("coinCard").innerHTML=coinCard;
 if(coins < 10){document.getElementById("exchangeStatus").innerHTML="🪙 コインが足りません";
-  document.getElementById("exchangeButton").disabled = true;
+document.getElementById("exchangeButton").style.background="gray";
 }else{
   document.getElementById("exchangeButton").disabled = false;
 }
