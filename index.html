@@ -21,12 +21,6 @@ h1{
 
 .card{background:white;padding:18px;margin:14px 0;border-radius:18px;box-shadow:0 4px 14px rgba(0,0,0,.12)}
 button{font-size:22px;padding:16px 30px;border:none;border-radius:18px;background:#ff4081;color:white;cursor:pointer;font-weight:bold}
-button:disabled{
-  background:#bbbbbb!important;
-  color:#777777!important;
-  opacity:0.45!important;
-  cursor:not-allowed!important;
-}
 #result{font-size:21px;line-height:1.7}.big{font-size:28px;font-weight:bold}.rank{font-size:22px;font-weight:bold;color:#d81b60}.small{font-size:14px;color:#666;margin-top:10px}
 .progress{background:#eee;border-radius:999px;height:18px;overflow:hidden;margin:12px 0}.bar{background:#ff80ab;height:100%;width:0%}
 </style>
@@ -69,7 +63,7 @@ button:disabled{
 🎁 コインを集めて交換しよう
 </p>
 <p>
-<button id="exchangeButton" onclick="exchangeCoin()"disabled>
+<button id="exchangeButton" onclick="exchangeCoin()">
 関根コイン１０枚で関根グッズ交換
 
 </p>
@@ -132,11 +126,6 @@ if(coins>=i){
 }
   }
 document.getElementById("coinCard").innerHTML=coinCard;
-if(coins < 10){document.getElementById("exchangeStatus").innerHTML="🪙 コインが足りません";
-document.getElementById("exchangeButton").style.background="gray";
-}else{
-  document.getElementById("exchangeButton").disabled = false;
-}
  let card="";
 for(let i=1;i<=10;i++){
   if(points>=i*500){
