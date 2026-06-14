@@ -201,14 +201,17 @@ function exchangeCoin(){
     coins -= 10;
     localStorage.setItem("sekineCoins", coins);
 
+    let ticketNo = Number(localStorage.getItem("sekineTicketNo") || 0) + 1;
+    localStorage.setItem("sekineTicketNo", ticketNo);
+
     document.getElementById("exchangeStatus").innerHTML =
     "🎉 おめでとうございます！<br><br>" +
     "関根コイン10枚達成！<br>" +
-    "🎁 関根グッズ交換券を発行しました。<br><br>" +
+    "🎫 関根グッズ交換券 No." + ticketNo + "<br><br>" +
     "景品をご希望の方は<br>" +
     "事務所までお声がけください😊";
 
-    alert("🎁 関根グッズ交換券を発行しました！");
+    alert("🎫 関根グッズ交換券 No." + ticketNo + " を発行しました！");
     updateDisplay();
 
   }else{
