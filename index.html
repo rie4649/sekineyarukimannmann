@@ -71,9 +71,11 @@ button{font-size:22px;padding:16px 30px;border:none;border-radius:18px;backgroun
 関根グッズ交換申請
 </button>
 </p>
+<h2>📜 関根グッズ交換履歴</h2>
 
-<p>
-
+<div id="exchangeHistoryList">
+まだ交換履歴はありません
+</div>
 </div>
 <h3>💳関根ポイントカード</h3>
 🥉500pt　ブリキ級：🎁関根コイン1枚ゲット<br><br>
@@ -142,6 +144,9 @@ document.getElementById("pointCard").innerHTML=card;
 const goal=nextGoal(points);const remain=Math.max(goal-points,0);
 document.getElementById("nextRank").innerHTML=points>=5000?"👑最高ランク達成中！":"次のランクまで "+remain+"pt";
 document.getElementById("bar").style.width=(points>=5000?100:Math.min((points/goal)*100,100))+"%";
+document.getElementById("exchangeHistoryList").innerHTML =
+localStorage.getItem("sekineHistory") || "まだ交換履歴はありません";
+
 const lastDraw=localStorage.getItem("sekineLastDraw");
 if(lastDraw===todayKey()){document.getElementById("drawButton").disabled=true;document.getElementById("todayStatus").innerHTML="今日はもう引きました。また明日ね✨"}else{document.getElementById("drawButton").disabled=false;document.getElementById("todayStatus").innerHTML="毎日1回チャレンジできます✨"}
 }
@@ -203,7 +208,9 @@ function exchangeCoin(){
 
     let ticketNo = Number(localStorage.getItem("sekineTicketNo") || 0) + 1;
     localStorage.setItem("sekineTicketNo", ticketNo);
-
+let history = localStorage.getItem("sekineHistory") || "";
+history = "🎁 関根グッズ交換券 No." + ticketNo + "<br>" + history;
+localStorage.setItem("sekineHistory", history);
     document.getElementById("exchangeStatus").innerHTML =
     "🎉 おめでとうございます！<br><br>" +
     "関根コイン10枚達成！<br>" +
@@ -212,6 +219,7 @@ function exchangeCoin(){
     "事務所までお声がけください😊";
 
     alert("🎫 関根グッズ交換券 No." + ticketNo + " を発行しました！");
+   document.getElementById("exchangeHistoryList").innerHTML = history;
     updateDisplay();
 
   }else{
