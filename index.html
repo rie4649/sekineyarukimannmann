@@ -44,11 +44,25 @@ margin-top:15px;
 color:#2563eb;
 line-height:1.8;
 ">
-🎯 本日の関根ミッション🎯<br>
-😊 笑顔で挨拶しよう<br>
-<span style="font-size:14px;color:#666;">
-開いただけで＋1pt！
-</span>
+🎯 本日の関根ミッション 🎯<br>
+
+<button onclick="showMission()"
+style="
+font-size:18px;
+padding:10px 22px;
+background:#3b82f6;
+color:white;
+border:none;
+border-radius:15px;
+font-weight:bold;
+margin-top:10px;
+">
+ミッションを見る
+</button>
+
+<div id="missionText"
+style="margin-top:12px;color:#333;">
+</div>
 </div>
   <div id="todayStatus" class="small"></div>
 </div>
@@ -343,7 +357,23 @@ function sekineGacha(){
 
   alert(result);
 }
+function showMission(){
 
+  const missions = [
+    "🦺 安全第一",
+    "🗑️ ゴミを拾おう",
+    "👏 誰かを褒めよう",
+    "🚚 安全運転",
+    "😊 笑顔で挨拶しよう"
+  ];
+
+  const mission =
+    missions[Math.floor(Math.random()*missions.length)];
+
+  document.getElementById("missionText").innerHTML =
+    mission +
+    "<br><span style='font-size:14px;color:#666;'>開いただけで＋1pt！</span>";
+}
   updateDisplay();
 </script>
 </body>
