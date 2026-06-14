@@ -184,8 +184,9 @@ const oldCoins=Math.floor((points-gain)/500);
   let rankUp="";
 
   if(beforeRank!==afterRank){
+    alert("🎊🎊🎊 おめでとう！ "+afterRank+" に昇格しました！ 🎊🎊🎊");
     rankUp="<br><br>🎊ランクアップ！🎊<br>"+prizeText(points);
-  }
+}
 
 document.getElementById("result").innerHTML =
 "<div style='font-size:46px;font-weight:bold;margin-bottom:18px;'>"+fortune.title+"</div>"
