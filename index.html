@@ -116,9 +116,32 @@ const bonuses=[
 let points=parseInt(localStorage.getItem("sekinePoints")||"0");
 let coins=parseInt(localStorage.getItem("sekineCoins")||"0");
 function todayKey(){const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
-function getRank(pt){if(pt>=5000)return"👑CU級";if(pt>=3000)return"🏆BS級";if(pt>=1500)return"🥇CU級";if(pt>=1000)return"🥈鉄A級";if(pt>=500)return"🥉ブリキ級";return"👶関根見習い"}
-function nextGoal(pt){if(pt<500)return 500;if(pt<1000)return 1000;if(pt<1500)return 1500;if(pt<3000)return 3000;if(pt<5000)return 5000;return 5000}
-function prizeText(pt){if(pt>=5000)return"🎉CU級達成！関根コイン１０枚ゲット＆お味噌汁追加ゲット";if(pt>=3000)return"🏆CU級達成！関根コイン１０枚ゲット＆お味噌汁追加！";if(pt>=1500)return"🥇CU級達成！関根コイン１０枚ゲット＆お味噌汁追加！";if(pt>=1000)return"🥈鉄A級達成！関根コイン3枚ゲット";if(pt>=500)return"🥉ブリキ級達成！関根コイン１枚ゲット";return""}
+function getRank(pt){
+  if(pt>=5000) return "👑 CU級";
+  if(pt>=3000) return "🏆 BS級";
+  if(pt>=1500) return "🥉 鉄A級";
+  if(pt>=1000) return "🥈 ギロ級";
+  if(pt>=500) return "🥉 ブリキ級";
+  return "👶 関根見習い";
+}
+
+function nextGoal(pt){
+  if(pt<500) return 500;
+  if(pt<1000) return 1000;
+  if(pt<1500) return 1500;
+  if(pt<3000) return 3000;
+  if(pt<5000) return 5000;
+  return 5000;
+}
+
+function prizeText(pt){
+  if(pt>=5000) return "👑 CU級達成！関根コイン10枚ゲット＆お味噌汁追加券ゲット！";
+  if(pt>=3000) return "🏆 BS級達成！関根コイン4枚ゲット！";
+  if(pt>=1500) return "🥉 鉄A級達成！関根コイン3枚ゲット！";
+  if(pt>=1000) return "🥈 ギロ級達成！関根コイン2枚ゲット！";
+  if(pt>=500) return "🥉 ブリキ級達成！関根コイン1枚ゲット！";
+  return "👶 関根見習い";
+}
 function updateDisplay(){
 document.getElementById("coins").innerHTML="現在コイン："+coins+"枚"; 
 document.getElementById("points").innerHTML="現在ポイント："+points+"pt";
