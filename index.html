@@ -208,7 +208,29 @@ const oldCoins=Math.floor((points-gain)/500);
 
   if(beforeRank!==afterRank){
     alert("🎊🎊🎊 おめでとう！ "+afterRank+" に昇格しました！ 🎊🎊🎊");
-    rankUp="<br><br>🎊ランクアップ！🎊<br>"+prizeText(points);
+rankUp=`
+<div style="
+background:linear-gradient(45deg,#ffd700,#fff4a3);
+color:#b45309;
+font-size:38px;
+font-weight:bold;
+padding:20px;
+border-radius:20px;
+margin-top:20px;
+box-shadow:0 6px 18px rgba(0,0,0,0.25);
+border:4px solid #ffcc00;
+text-align:center;
+">
+✨ 関根商店より特別表彰 ✨
+<br><br>
+🎊🎊🎊<br>
+おめでとう！<br>
+${afterRank} に昇格しました！<br>
+🎊🎊🎊
+</div>
+<br>
+${prizeText(points)}
+`;
 }
 
 document.getElementById("result").innerHTML =
