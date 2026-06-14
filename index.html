@@ -36,7 +36,11 @@ button{font-size:22px;padding:16px 30px;border:none;border-radius:18px;backgroun
 <h2>今日の運勢を占う</h2>
 <p>欲張らず一日一回まで毎日1ポイント取得</p>
 <button id="drawButton" onclick="drawOmikuji()">おみくじを引く</button>
-<div id="todayStatus" class="small"></div>
+<button onclick="sekineGacha()">
+🎲 運試し 関根ガチャ（コイン1枚）
+</button>
+<p>一等を狙え！🏆</p>
+  <div id="todayStatus" class="small"></div>
 </div>
 
 <div id="result" class="card" style="font-size:14px;">
@@ -273,6 +277,36 @@ localStorage.setItem("sekineHistory", history);
     "🟡 コインが足りません<br>" +
     "コイン10枚で関根グッズ交換券発行";
   }
+}
+function sekineGacha(){
+
+  if(coins < 1){
+    alert("コインが足りません🥲");
+    return;
+  }
+
+  coins--;
+
+  const r = Math.random();
+
+  let result="";
+
+  if(r < 0.05){
+    coins += 5;
+    result="🎊🏆 一等 🏆🎊\n\n💰 コイン5枚ゲット！";
+  }
+  else if(r < 0.25){
+    result="🎉 二等 🎉\n\n🍪 お菓子プレゼント！";
+  }
+  else{
+    result="😭 三等\n\nハズレ...";
+  }
+
+  localStorage.setItem("sekineCoins", coins);
+
+  updateDisplay();
+
+  alert(result);
 }
 
   updateDisplay();
