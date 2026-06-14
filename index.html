@@ -398,28 +398,7 @@ updateDisplay();
 alert("🎉 ミッション達成！\n\n+1pt獲得！");
 
 }
-const mission =
-missions[Math.floor(Math.random()*missions.length)];
 
-if(lastMission !== today){
-
-points += 1;
-
-localStorage.setItem("sekinePoints", points);
-localStorage.setItem("missionDate", today);
-
-updateDisplay();
-
-alert("🎉 ミッション達成！\n\n+1pt獲得！");
-}
-
-document.getElementById("missionText").innerHTML =
-"<div style='font-size:28px;font-weight:bold;'>" +
-mission +
-"</div>" +
-"<div style='font-size:16px;color:#666;margin-top:8px;'>開いただけで+1pt！</div>";
-
-}
 </script>
 </body>
 </html>
