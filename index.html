@@ -544,7 +544,53 @@ document.getElementById("sugorokuBoard").innerHTML = board;
 }
 
 
+function showSugorokuBoard(){
 
+  let savedPos = Number(localStorage.getItem("sugorokuPos")) || 0;
+
+
+
+  document.getElementById("sugorokuPosition").innerHTML =
+
+  savedPos === 0 ? "現在位置：スタート🚚" : "現在位置：" + savedPos + " / 30マス 🚚";
+
+
+
+  let board = "🏁";
+
+
+
+  for(let i = 1; i <= 30; i++){
+
+    if(i === savedPos){
+
+      board += "🚚";
+
+    }else if(i === 30){
+
+      board += "🏆";
+
+    }else{
+
+      board += "⬜";
+
+    }
+
+
+
+    if(i === 10 || i === 20){
+
+      board += "<br>";
+
+    }
+
+  }
+
+
+
+  document.getElementById("sugorokuBoard").innerHTML = board;
+
+}
 </script>
 </body>
 </html>
