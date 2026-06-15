@@ -433,7 +433,15 @@ let sugorokuPos =
 Number(localStorage.getItem("sugorokuPos")) || 0;
 
 function playSugoroku(){
+const today = new Date().toLocaleDateString();
+const lastSugoroku = localStorage.getItem("sugorokuDate");
 
+if(lastSugoroku === today){
+alert("😎 何度も振ってもダメだぜ！\nまた明日挑戦してくれ！");
+return;
+}
+
+localStorage.setItem("sugorokuDate", today);
 const dice = Math.floor(Math.random()*6)+1;
 
 const events = {
