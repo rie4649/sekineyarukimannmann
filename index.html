@@ -433,15 +433,35 @@ let sugorokuPos =
 Number(localStorage.getItem("sugorokuPos")) || 0;
 
 function playSugoroku(){
+
 const today = new Date().toLocaleDateString();
 const lastSugoroku = localStorage.getItem("sugorokuDate");
 
 if(lastSugoroku === today){
-alert("😎 何度も振ってもダメだぜ！\nまた明日挑戦してくれ！");
-return;
+  alert("😎 何度も振ってもダメだぜ！\nまた明日挑戦してくれ！");
+  return;
 }
 
 localStorage.setItem("sugorokuDate", today);
+
+let rollCount = 0;
+
+const rolling = setInterval(function(){
+
+const tempDice = Math.floor(Math.random()*6)+1;
+
+document.getElementById("sugorokuResult").innerHTML =
+"🎲 コロコロ中...<br>サイコロ：" + tempDice;
+
+rollCount++;
+
+if(rollCount >= 10){
+
+clearInterval(rolling);
+
+let sugorokuPos =
+Number(localStorage.getItem("sugorokuPos")) || 0;
+
 const dice = Math.floor(Math.random()*6)+1;
 
 const events = {
@@ -465,30 +485,37 @@ const move = {
 sugorokuPos += move[dice];
 
 if(sugorokuPos < 0){
-sugorokuPos = 0;
+  sugorokuPos = 0;
 }
 
 if(sugorokuPos >= 30){
-sugorokuPos = 30;
+  sugorokuPos = 0;
 
-alert("🏆ゴール達成！\n関根コイン5枚ゲット！");
+  let coins =
+  Number(localStorage.getItem("sekineCoins")) || 0;
 
-localStorage.setItem("sugorokuPos",0);
+  coins += 5;
 
-document.getElementById("sugorokuPosition").innerHTML =
-"現在位置：ゴール🏆";
+  localStorage.setItem("sekineCoins", coins);
 
-return;
+  alert("🏆ゴール達成！\n関根コイン5枚ゲット！");
 }
 
-localStorage.setItem("sugorokuPos",sugorokuPos);
+localStorage.setItem("sugorokuPos", sugorokuPos);
 
 document.getElementById("sugorokuResult").innerHTML =
 "🎲 サイコロ：" + dice +
 "<br>" + events[dice];
 
 document.getElementById("sugorokuPosition").innerHTML =
-"現在位置：" + sugorokuPos + " / 30 マス";
+"現在位置：" + sugorokuPos + " / 30マス 🚚";
+
+updateDisplay();
+
+}
+
+},100);
+
 }
 
 
