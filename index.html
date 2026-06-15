@@ -94,7 +94,15 @@ style="margin-top:15px;font-size:18px;font-weight:bold;">
 style="margin-top:12px;font-size:18px;font-weight:bold;">
 現在位置：スタート🚚
 </div>
-  
+<div id="sugorokuBoard"
+style="
+margin-top:12px;
+font-size:24px;
+line-height:1.6;
+word-break:break-all;
+">
+🏁🚚⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜🏆
+</div>  
 </div>
 <div id="result" class="card" style="font-size:14px;">
 ✨ポイントをためて毎日元気に過ごしましょう✨
@@ -512,7 +520,20 @@ document.getElementById("sugorokuResult").innerHTML =
 document.getElementById("sugorokuPosition").innerHTML =
 "現在位置：" + sugorokuPos + " / 30マス 🚚";
 
-updateDisplay();
+let board = "🏁";
+
+for(let i = 1; i <= 30; i++){
+  if(i === sugorokuPos){
+    board += "🚚";
+  }else if(i === 30){
+    board += "🏆";
+  }else{
+    board += "⬜";
+  }
+}
+
+document.getElementById("sugorokuBoard").innerHTML = board;
+  updateDisplay();
 
 }
 
