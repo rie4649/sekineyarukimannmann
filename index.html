@@ -328,16 +328,15 @@ ${prizeText(points)}
 document.getElementById("result").innerHTML =
 "<div style='position:fixed;top:0;left:0;width:100%;height:100%;background:white;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;'>" +
 
-"<div style='font-size:44px;font-weight:bold;color:#ff4081;'>🔮 関根商店に問い合わせ中 🔮</div>" +
+"<div style='font-size:32px;font-weight:bold;color:#ff4081;'>🔮 関根商店に問い合わせ中 🔮</div>" +
 
-"<div style='font-size:80px;margin-top:40px;'>📞</div>" +
+"<div style='font-size:50px;margin-top:40px;'>📞</div>" +
 
-"<div style='font-size:54px;font-weight:bold;margin-top:20px;'>プルルルル…</div>" +
+"<div style='font-size:42px;font-weight:bold;margin-top:20px;'>プルルルル…</div>" +
 
-"<div style='font-size:28px;margin-top:40px;'>担当者を呼び出しています</div>" +
+"<div style='font-size:36px;font-weight:bold;margin-top:40px;'>担当者を呼び出しています</div>" +
 
-"<div style='font-size:28px;margin-top:15px;color:#666;'>今しばらくお待ちください</div>" +
-
+"<div style='font-size:34px;font-weight:bold;color:#666;'>今しばらくお待ちください</div>" +
 "</div>";
 
 setTimeout(() => {
@@ -354,7 +353,7 @@ document.getElementById("result").scrollIntoView({
 });
 
 updateDisplay();
-},3000);
+},5000);
 }
 function exchangeCoin(){
   if(coins >= 10){
