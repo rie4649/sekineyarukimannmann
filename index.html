@@ -141,9 +141,11 @@ margin-top:12px;
 style="margin-top:15px;font-size:18px;font-weight:bold;line-height:1.8;">
 </div>
 <div style="margin-top:15px;line-height:1.8;">
-🏆 一等　コイン5枚<br>
-🍪 二等　お菓子<br>
-💀 三等　残念
+🏆 一等　ラッキー✌️コイン5枚ゲット<br>
+🥈 二等　やったね🙌コイン4枚ゲット<br>
+🥉 三等　コイン3枚ゲット<br>
+😆 四等　がびーん！期待はずれ😂空くじでした😂<br>
+☠️ 五等　契約白紙でコインもらえず☠️ハズレ
 </div>
 
 <h2>関根商店お宝交換所</h2>
@@ -379,16 +381,24 @@ function sekineGacha(){
   let result="";
 document.getElementById("gachaResult").innerHTML =
 "🎯 関根商店に問い合わせ中…<br>ガラガラガラ…";
-  if(r < 0.05){
-    coins += 5;
-    result="🎊🏆 一等 🏆🎊\n\n💰 コイン5枚ゲット！";
-  }
-  else if(r < 0.25){
-    result="🎉 二等 🎉\n\n🍪 お菓子プレゼント！";
-  }
-  else{
-    result="😭 三等\n\nハズレ...";
-  }
+if(r < 0.05){
+  coins += 5;
+  result="🏆 一等\n\n✌️ラッキー！コイン5枚ゲット！";
+}
+else if(r < 0.15){
+  coins += 4;
+  result="🥈 二等\n\n🙌やったね！コイン4枚ゲット！";
+}
+else if(r < 0.35){
+  coins += 3;
+  result="🥉 三等\n\n🎉コイン3枚ゲット！";
+}
+else if(r < 0.70){
+  result="😆 四等\n\nがびーん！期待はずれ😂\n\n空くじでした😂";
+}
+else{
+  result="☠️ 五等\n\n契約白紙でコインもらえず☠️\n\nハズレ";
+}
 
 setTimeout(() => {
 
