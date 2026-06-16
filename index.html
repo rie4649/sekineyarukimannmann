@@ -336,11 +336,14 @@ document.getElementById("result").innerHTML =
 +"<div style='font-size:28px;color:#ff4081;font-weight:bold;margin-top:18px;'>🎉 "+bonus.msg+"</div>"
 +"<div style='font-size:40px;font-weight:bold;color:#ff4081;margin-top:18px;'>+"+gain+"pt</div>"
 +rankUp;
+
+document.getElementById("result").scrollIntoView({
+  behavior:"smooth"
+});
+
+updateDisplay();
 },3000);
 
-document.getElementById("result").scrollIntoView({behavior:"smooth"}); 
-
-  updateDisplay();
 }
 function exchangeCoin(){
   if(coins >= 10){
