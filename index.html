@@ -375,7 +375,8 @@ function sekineGacha(){
   const r = Math.random();
 
   let result="";
-
+document.getElementById("result").innerHTML =
+"🎯 関根商店に問い合わせ中…<br>ガラガラガラ…";
   if(r < 0.05){
     coins += 5;
     result="🎊🏆 一等 🏆🎊\n\n💰 コイン5枚ゲット！";
@@ -391,7 +392,11 @@ function sekineGacha(){
 
   updateDisplay();
 
-  alert(result);
+setTimeout(() => {
+
+    alert(result);
+
+}, 3000);
 }
 function showMission(){
 
