@@ -390,13 +390,11 @@ document.getElementById("gachaResult").innerHTML =
     result="😭 三等\n\nハズレ...";
   }
 
-  localStorage.setItem("sekineCoins", coins);
-
-  updateDisplay();
-
 setTimeout(() => {
 
-document.getElementById("result").innerHTML = result;
+  localStorage.setItem("sekineCoins", coins);
+  updateDisplay();
+  document.getElementById("gachaResult").innerHTML = result;
 
 }, 3000);
 }
