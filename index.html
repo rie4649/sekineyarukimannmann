@@ -487,25 +487,43 @@ Number(localStorage.getItem("sugorokuPos")) || 0;
 
 const dice = Math.floor(Math.random()*6)+1;
 
-const events = {
-1:"🚚 安全運転！2コマ進む",
-2:"💥 トラックエンスト！焦る1コマ下がる",
-3:"✨ 事務所の対応が神レベル！嬉しいね3コマ進む",
-4:"🎉 関根商店ラッキーチャンス！5コマ進む",
-5:"🍱 お昼のお弁当が美味しい！1コマ進む",
-6:"🍪 差し入れでお菓子をもらう！2コマ進む"
-};
+const sugorokuEvents = [
+  {text:"二度寝して遅刻！1コマ戻る", move:-1},
+  {text:"信号が全部青！幸せ！2コマ進む", move:2},
+  {text:"事務員が老眼で書類見えず！1コマ戻る", move:-1},
+  {text:"犬🐶のフンを踏む！1コマ戻る", move:-1},
+  {text:"社長に褒められた！2コマ進む", move:2},
+  {text:"事務所の機嫌が鬼！2コマ戻る", move:-2},
+  {text:"交通渋滞！1コマ戻る", move:-1},
+  {text:"関根ボーナス！5コマ進む", move:5},
+  {text:"お客様に感謝された！2コマ進む", move:2},
+  {text:"事務所が仕事やる気なし！1コマ戻る", move:-1},
+  {text:"立ち上がった瞬間、何をしに来たか忘れた！1コマ戻る", move:-1},
+  {text:"興奮して血圧が上がった！1コマ戻る", move:-1},
+  {text:"目覚まし時計より早く起きた！1コマ進む", move:1},
+  {text:"ヒューヒューと聞こえたのでナンパかと思ったら風の音だった！1コマ戻る", move:-1},
+  {text:"おばちゃんと言われて機嫌の悪い事務員に八つ当たりされる1コマ戻る", move:2},
+  {text:"何もないところで転ぶ！1コマ戻る", move:-1},
+  {text:"客先で若いですねと言われた！3コマ進む", move:3},
+  {text:"ティッシュを入れたまま作業着を選択する2コマ戻る", move:-2},
+  {text:"薬を飲んだか忘れた！1コマ戻る", move:-1},
+  {text:"バック駐車一発成功！2コマ進む", move:2},
+  {text:"差し入れゲット！2コマ進む", move:2},
+  {text:"荷物が思ったより重かった！ぎっくり腰！コマ戻る", move:-1},
+  {text:"工事渋滞発生！1コマ戻る", move:-1},
+  {text:"社長フィーバー！5コマ進む", move:5},
+  {text:"自動販売機で一本おまけが当たる！3コマ進む", move:3},
+  {text:"事務員が耳が遠くなって聞き違いされる2コマ進む", move:-3},
+  {text:"探し物が30秒で見つかった！1コマ進む", move:1},
+  {text:"お昼のお弁当が大当たり🍱 2コマ進む", move:2},
+  {text:"トイレに行ったら使用中🚻 1コマ戻る", move:-1},
+  {text:"事務員に違う場所の回収場所を教えられる！1コマ戻る", move:-1}
+];
 
-const move = {
-1:2,
-2:-1,
-3:3,
-4:5,
-5:1,
-6:2
-};
+const selectedEvent =
+sugorokuEvents[Math.floor(Math.random() * sugorokuEvents.length)];
 
-sugorokuPos += move[dice];
+sugorokuPos += selectedEvent.move;
 
 if(sugorokuPos < 0){
   sugorokuPos = 0;
@@ -528,7 +546,7 @@ localStorage.setItem("sugorokuPos", sugorokuPos);
 
 document.getElementById("sugorokuResult").innerHTML =
 "🎲 サイコロ：" + dice +
-"<br>" + events[dice];
+"<br>" + selectedEvent.text;
 
 document.getElementById("sugorokuPosition").innerHTML =
 "現在位置：" + sugorokuPos + " / 30マス 🚚";
