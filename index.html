@@ -494,20 +494,24 @@ let sugorokuPos =
 Number(localStorage.getItem("sugorokuPos")) || 0;
 function checkAttendance(){
 
+let points = Number(localStorage.getItem("sekinePoints")) || 0;
+points += 1;
+localStorage.setItem("sekinePoints", points);
+
 document.getElementById("attendanceResult").innerHTML =
 `
 📒 出勤確認中...<br><br>
-
 ██████████<br><br>
-
 ㊞<br><br>
-
 出勤完了！<br><br>
-
+関根商店はあなたの出勤を確認しました<br><br>
 🏪 関根ポイント +1
 `;
 
+updateDisplay();
+
 }
+
 function playSugoroku(){
 
 const today = new Date().toLocaleDateString();
