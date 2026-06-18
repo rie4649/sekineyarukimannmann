@@ -493,7 +493,17 @@ alert("🎉 ミッション達成！\n\n+1pt獲得！");
 let sugorokuPos =
 Number(localStorage.getItem("sugorokuPos")) || 0;
 function checkAttendance(){
+const today = new Date().toLocaleDateString();
 
+const lastAttendance =
+localStorage.getItem("attendanceDate");
+
+if(lastAttendance === today){
+  alert("📒 今日はもう出勤済みです！");
+  return;
+}
+
+localStorage.setItem("attendanceDate", today);
 let points = Number(localStorage.getItem("sekinePoints")) || 0;
 points += 1;
 localStorage.setItem("sekinePoints", points);
