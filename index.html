@@ -31,7 +31,31 @@ button{font-size:22px;padding:16px 30px;border:none;border-radius:18px;backgroun
   <h1>関根商店<br>やる気スイッチおみくじ</h1>
   <img src="sekine.png" width="70">
 </div>
+<div class="card">
 
+<h2>📒 関根商店出勤簿</h2>
+
+<p>本日の出勤確認をお願いします</p>
+
+<button onclick="checkAttendance()"
+style="
+font-size:22px;
+padding:16px 30px;
+background:#4caf50;
+color:white;
+border:none;
+border-radius:15px;
+font-weight:bold;
+margin-top:10px;
+">
+㊞ タイムカードを押す
+</button>
+
+<div id="attendanceResult"
+style="margin-top:15px;font-size:18px;font-weight:bold;">
+</div>
+
+</div>
 <div class="card">
 <h2>今日の運勢を占う</h2>
 <p>欲張らないで毎日1ポイント取得</p>
@@ -468,7 +492,22 @@ alert("🎉 ミッション達成！\n\n+1pt獲得！");
 
 let sugorokuPos =
 Number(localStorage.getItem("sugorokuPos")) || 0;
+function checkAttendance(){
 
+document.getElementById("attendanceResult").innerHTML =
+`
+📒 出勤確認中...<br><br>
+
+██████████<br><br>
+
+㊞<br><br>
+
+出勤完了！<br><br>
+
+🏪 関根ポイント +1
+`;
+
+}
 function playSugoroku(){
 
 const today = new Date().toLocaleDateString();
