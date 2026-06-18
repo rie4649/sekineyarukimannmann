@@ -527,7 +527,9 @@ document.getElementById("result").innerHTML =
 "<div style='font-size:26px;line-height:1.8;max-width:90%;'>" + mission + "</div>" +
 "</div>";
 }, 5000);
-
+setTimeout(() => {
+  document.getElementById("result").innerHTML = "";
+}, 8000);
 }
 
 let sugorokuPos =
