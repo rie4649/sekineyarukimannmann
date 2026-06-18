@@ -510,6 +510,11 @@ document.getElementById("attendanceResult").innerHTML =
 
 updateDisplay();
 
+setTimeout(() => {
+  document.getElementById("attendanceResult").innerHTML = "";
+}, 5000);
+
+}
 }
 
 function playSugoroku(){
