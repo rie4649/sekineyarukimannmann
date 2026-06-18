@@ -499,20 +499,27 @@ points += 1;
 localStorage.setItem("sekinePoints", points);
 
 document.getElementById("attendanceResult").innerHTML =
+document.getElementById("attendanceResult").innerHTML =
 `
-📒 出勤確認中...<br><br>
+📒 関根商店出勤簿<br><br>
+
+㊞ タイムカード確認中...<br><br>
+
 ██████████<br><br>
+
+✨✨✨<br><br>
+
+🎊 出勤完了！ 🎊<br><br>
 ㊞<br><br>
-出勤完了！<br><br>
-関根商店はあなたの出勤を確認しました<br><br>
+
+関根商店は<br>
+本日の出勤を確認しました<br><br>
+
 🏪 関根ポイント +1
 `;
 
 updateDisplay();
 
-setTimeout(() => {
-  document.getElementById("attendanceResult").innerHTML = "";
-}, 5000);
 
 }
 
