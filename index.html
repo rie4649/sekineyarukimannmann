@@ -387,8 +387,8 @@ updateDisplay();
 },5000);
 }
 function exchangeCoin(){
-  if(coins >= 10){
-    coins -= 10;
+  if(coins >= 15){
+    coins -= 15;
     localStorage.setItem("sekineCoins", coins);
 
     let ticketNo = Number(localStorage.getItem("sekineTicketNo") || 0) + 1;
@@ -415,35 +415,32 @@ localStorage.setItem("sekineHistory", history);
 }
 function sekineGacha(){
 
-  if(coins < 1){
+  if(coins < 15){
     alert("コインが足りません🥲");
     return;
   }
 
-  coins--;
+  coins-=15;
 
   const r = Math.random();
 
   let result="";
 document.getElementById("gachaResult").innerHTML =
-"🎯 関根商店に問い合わせ中…<br>ガラガラガラ…";
+"🚨 関根本部許可確認中...<br>██████████<br><br>特別保管庫の開錠を開始します<br><br>本当に開けて良いか確認中...?!<br><br>🔊 ガガガガガ……<br>⚡ウィーン⚡";
 if(r < 0.05){
-  coins += 5;
-  result="🏆 一等\n\n✌️ラッキー！コイン5枚ゲット！";
+  result = "💎 レアメタル<br><br>レア度：★★★★★<br><br>📖 特徴<br>希少性が高く、ハイブリッド車やスマートフォン、風力発電など先端技術に欠かせない金属。<br><br>🌍 豆知識<br>レアメタルがなければスマホや電気自動車は作れません。";
 }
-else if(r < 0.15){
-  coins += 4;
-  result="🥈 二等\n\n🙌やったね！コイン4枚ゲット！";
+else if(r < 0.20){
+  result = "🟡 非鉄金属<br><br>レア度：★★★★☆<br><br>📖 特徴<br>鉄以外の金属の総称。<br>銅・真鍮・砲金・鉛・亜鉛など種類が豊富。<br><br>🌍 豆知識<br>電気を流しやすいため電線の多くは銅でできています。";
 }
-else if(r < 0.35){
-  coins += 3;
-  result="🥉 三等\n\n🎉コイン3枚ゲット！";
+else if(r < 0.45){
+  result = "⚪ アルミ<br><br>レア度：★★★☆☆<br><br>📖 特徴<br>鉄の約3分の1の軽さ。<br>軽量で錆びにくくリサイクル性も高い。<br><br>🌍 豆知識<br>アルミ缶は何度でも新しい缶に生まれ変われます。";
 }
 else if(r < 0.70){
-  result="😆 四等\n\nがびーん！期待はずれ😂\n\n空くじでした😂";
+  result = "🔩 ステンレス<br><br>レア度：★★☆☆☆<br><br>📖 特徴<br>鉄にクロムやニッケルを加えた合金。<br>錆びにくく耐久性に優れる。<br><br>🌍 豆知識<br>実は100種類以上の種類があります。";
 }
 else{
-  result="☠️ 五等\n\n契約白紙でコインもらえず☠️\n\nハズレ";
+  result = "⚫ 鉄<br><br>レア度：★☆☆☆☆<br><br>📖 特徴<br>世界で最も多く使われる金属。<br>建物・自動車・橋・船など社会の基盤を支えています。<br><br>🌍 豆知識<br>エッフェル塔も主に鉄で作られています。";
 }
 
 setTimeout(() => {
