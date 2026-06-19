@@ -188,13 +188,21 @@ style="margin-top:15px;font-size:18px;font-weight:bold;line-height:1.8;">
 <div id="exchangeHistoryList">
 まだ資源発見されてません
 </div>
+<h2>🎁 関根グッズ交換所</h2>
+
+<p>
+コインを集めて関根グッズと交換しよう
+</p>
+
 <button onclick="exchangeGoods()">
 🎁 関根グッズ交換券を発行
 </button>
 
 <p>
-関根コイン10枚で交換券発行
+必要コイン：30枚
 </p>
+
+<h3>📋 発行履歴</h3>
 
 <div id="exchangeHistory">
 まだ交換券は発行されていません
@@ -393,8 +401,8 @@ updateDisplay();
 },5000);
 }
 function exchangeGoods(){
-  if(coins >= 15){
-    coins -= 15;
+  if(coins >= 30){
+    coins -= 30;
     localStorage.setItem("sekineCoins", coins);
 
     let ticketNo = Number(localStorage.getItem("sekineTicketNo") || 0) + 1;
@@ -404,7 +412,7 @@ history = "🎁 関根グッズ交換券 No." + ticketNo + "<br>" + history;
 localStorage.setItem("sekineHistory", history);
     document.getElementById("exchangeStatus").innerHTML =
     "🎉 おめでとうございます！<br><br>" +
-    "関根コイン10枚達成！<br>" +
+    "関根コイン30枚達成！<br>" +
     "🎫 関根グッズ交換券 No." + ticketNo + "<br><br>" +
     "景品をご希望の方は<br>" +
     "事務所までお声がけください😊";
@@ -416,7 +424,7 @@ localStorage.setItem("sekineHistory", history);
   }else{
     document.getElementById("exchangeStatus").innerHTML =
     "🟡 コインが足りません<br>" +
-    "コイン10枚で関根グッズ交換券発行";
+    "コイン30枚で関根グッズ交換券発行";
   }
 }
 function sekineGacha(){
