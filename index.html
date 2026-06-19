@@ -401,55 +401,11 @@ updateDisplay();
 },5000);
 }
 function exchangeGoods(){
+  alert("ボタンは押せています");
 
-document.getElementById("exchangeStatus").innerHTML =
-"<div style='font-size:34px;font-weight:bold;line-height:1.8;text-align:center;'>" +
-"🎁✨ 関根グッズ交換所 起動中 ✨🎁<br><br>" +
-"</div>" +
+  document.getElementById("exchangeStatus").innerHTML =
+    "🎁 交換所チェック中...";
 
-"<div style='font-size:20px;line-height:1.8;text-align:center;'>" +
-"📢 交換券発行審査中...<br><br>" +
-"🔊 ガチャガチャガチャ……<br><br>" +
-"⚡ 発行準備中 ⚡" +
-"</div>";
-  setTimeout(() => {
-
-    if(coins >= 30){
-      coins -= 30;
-      localStorage.setItem("sekineCoins", coins);
-
-      let ticketNo = Number(localStorage.getItem("sekineTicketNo") || 0) + 1;
-      localStorage.setItem("sekineTicketNo", ticketNo);
-
-      let history = localStorage.getItem("sekineTicketHistory") || "";
-      history = "🎁 関根グッズ交換券 No." + ticketNo + "<br>" + history;
-      localStorage.setItem("sekineTicketHistory", history);
-
-    document.getElementById("exchangeStatus").innerHTML =
-  "<div style='font-size:46px;font-weight:bold;line-height:1.7;margin:20px 0;'>" +
-  "🎉 関根グッズ交換券<br>発行完了！ 🎉" +
-  "</div>" +
-  "<div style='font-size:34px;font-weight:bold;line-height:1.8;'>" +
-  "🎫 No." + ticketNo + "<br>" +
-  "🎁 関根グッズ交換券" +
-  "</div>";
-  document.getElementById("exchangeHistory").innerHTML = history;
-      updateDisplay();
-
-    }else{
-document.getElementById("exchangeStatus").innerHTML =
-  "<div style='font-size:32px;font-weight:bold;line-height:1.7;margin:20px 0;color:#ff4081;'>" +
-  "🟡 コイン不足！" +
-  "</div>" +
-  "<div style='font-size:22px;font-weight:bold;line-height:1.9;'>" +
-"💰 必要コイン：30枚<br>" +
-"⭐ 現在コイン：" + Number(localStorage.getItem('sekineCoins') || 0) + "枚<br><br>" +
-"🎁 交換券発行まで<br>" +
-"あと " + (30 - Number(localStorage.getItem('sekineCoins') || 0)) + " 枚！" +
-
-    }
-
-  }, 10000);
 }
 function sekineGacha(){
 
