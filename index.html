@@ -419,7 +419,8 @@ function sekineGacha(){
 
   const r = Math.random();
   let result = "";
-let itemName = "";
+  let itemName = "";
+
   document.getElementById("gachaResult").innerHTML =
     "🚨 関根本部許可確認中...<br>" +
     "██████████<br><br>" +
@@ -428,45 +429,46 @@ let itemName = "";
     "🔊 ガガガガガ……<br>" +
     "⚡ウィーン⚡";
 
-if(r < 0.05){
-  itemName = "💎 レアメタル";
-  result = "💎 レアメタル<br><br>📖 特徴<br>希少性が高く、スマートフォンや電気自動車など先端技術に欠かせない金属。<br><br>🌍 豆知識<br>小さな部品の中で大活躍しています。";
-}
-else if(r < 0.20){
-  itemName = "🟡 非鉄金属";
-  result = "🟡 非鉄金属<br><br>📖 特徴<br>鉄以外の金属の総称。銅・真鍮・鉛・亜鉛など種類が豊富。<br><br>🌍 豆知識<br>電気を通しやすいものが多く、電線などにも使われます。";
-}
-else if(r < 0.45){
-  itemName = "⚪ アルミ";
-  result = "⚪ アルミ<br><br>📖 特徴<br>軽くて錆びにくい金属。缶やサッシなど身近な場所で活躍。<br><br>🌍 豆知識<br>リサイクルしやすく、何度も生まれ変われます。";
-}
-else if(r < 0.70){
-  itemName = "🔩 ステンレス";
-  result = "🔩 ステンレス<br><br>📖 特徴<br>錆びにくく丈夫な合金。キッチン用品や建物にも使われます。<br><br>🌍 豆知識<br>実は種類がたくさんあります。";
-}
-else{
-  itemName = "⚫ 鉄";
-  result = "⚫ 鉄<br><br>📖 特徴<br>世界で最も多く使われる金属。建物・車・橋などを支えています。<br><br>🌍 豆知識<br>地味ですが、社会を支える主役です。";
-}
+  if(r < 0.05){
+    itemName = "💎 レアメタル";
+    result = "💎 レアメタル<br><br>📖 特徴<br>希少性が高く、スマートフォンや電気自動車など先端技術に欠かせない金属。<br><br>🌍 豆知識<br>小さな部品の中で大活躍しています。";
+  }
+  else if(r < 0.20){
+    itemName = "🟡 非鉄金属";
+    result = "🟡 非鉄金属<br><br>📖 特徴<br>鉄以外の金属の総称。銅・真鍮・鉛・亜鉛など種類が豊富。<br><br>🌍 豆知識<br>電気を通しやすいものが多く、電線などにも使われます。";
+  }
+  else if(r < 0.45){
+    itemName = "⚪ アルミ";
+    result = "⚪ アルミ<br><br>📖 特徴<br>軽くて錆びにくい金属。缶やサッシなど身近な場所で活躍。<br><br>🌍 豆知識<br>リサイクルしやすく、何度も生まれ変われます。";
+  }
+  else if(r < 0.70){
+    itemName = "🔩 ステンレス";
+    result = "🔩 ステンレス<br><br>📖 特徴<br>錆びにくく丈夫な合金。キッチン用品や建物にも使われます。<br><br>🌍 豆知識<br>実は種類がたくさんあります。";
+  }
+  else{
+    itemName = "⚫ 鉄";
+    result = "⚫ 鉄<br><br>📖 特徴<br>世界で最も多く使われる金属。建物・車・橋などを支えています。<br><br>🌍 豆知識<br>地味ですが、社会を支える主役です。";
+  }
 
-let history = localStorage.getItem("sekineHistory") || "";
-history = itemName + "<br>" + history;
-localStorage.setItem("sekineHistory", history);
+  let history = localStorage.getItem("sekineHistory") || "";
+  history = itemName + "<br>" + history;
+  localStorage.setItem("sekineHistory", history);
 
-setTimeout(() => {
-  document.getElementById("exchangeHistoryList").innerHTML = history;
+  setTimeout(() => {
+    document.getElementById("exchangeHistoryList").innerHTML = history;
 
-  document.getElementById("gachaResult").innerHTML =
-    "✨✨✨✨✨<br>" +
-    "🎁 宝箱発見！<br>" +
-    "✨✨✨✨✨<br><br>" +
-    "✨ 新資源発見 ✨<br><br>" +
-    "📔 関根資源図鑑に登録しました<br><br>" +
-    "🔍 引き続き調査を続行してください<br><br>" +
-    result;
+    document.getElementById("gachaResult").innerHTML =
+      "✨✨✨✨✨<br>" +
+      "🎁 宝箱発見！<br>" +
+      "✨✨✨✨✨<br><br>" +
+      "✨ 新資源発見 ✨<br><br>" +
+      "📔 関根資源図鑑に登録しました<br><br>" +
+      "🔍 引き続き調査を続行してください<br><br>" +
+      result;
 
-  updateDisplay();
-}, 5000);
+    updateDisplay();
+  }, 5000);
+}
 
 function showMission(){
 
