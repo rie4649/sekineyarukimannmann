@@ -407,9 +407,9 @@ function exchangeGoods(){
 
     let ticketNo = Number(localStorage.getItem("sekineTicketNo") || 0) + 1;
     localStorage.setItem("sekineTicketNo", ticketNo);
-let history = localStorage.getItem("sekineHistory") || "";
+let history = localStorage.getItem("sekineTicketHistory") || "";
 history = "🎁 関根グッズ交換券 No." + ticketNo + "<br>" + history;
-localStorage.setItem("sekineHistory", history);
+localStorage.setItem("sekineicketHistory", history);
     document.getElementById("exchangeStatus").innerHTML =
     "🎉 おめでとうございます！<br><br>" +
     "関根コイン30枚達成！<br>" +
