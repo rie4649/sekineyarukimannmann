@@ -205,7 +205,17 @@ style="margin-top:15px;font-size:18px;font-weight:bold;line-height:1.8;">
 <h3>📋 発行履歴</h3>
 
 <div id="exchangeHistory">
-まだ交換券は発行されていません
+🎁✨ 関根グッズ交換所へようこそ ✨🎁<br><br>
+
+📢 現在発行された交換券はありません<br><br>
+
+💰 コインを30枚集めると…<br>
+🎫 関根グッズ交換券が発行できます！<br><br>
+
+🏪 関根商店本部より<br>
+交換券発行者募集中！<br><br>
+
+🔥 次の発行者は君だ！ 🔥
 </div>
 </div>
 </div>
@@ -401,31 +411,47 @@ updateDisplay();
 },5000);
 }
 function exchangeGoods(){
-  if(coins >= 30){
-    coins -= 30;
-    localStorage.setItem("sekineCoins", coins);
 
-    let ticketNo = Number(localStorage.getItem("sekineTicketNo") || 0) + 1;
-    localStorage.setItem("sekineTicketNo", ticketNo);
-let history = localStorage.getItem("sekineTicketHistory") || "";
-history = "🎁 関根グッズ交換券 No." + ticketNo + "<br>" + history;
-localStorage.setItem("sekineicketHistory", history);
-    document.getElementById("exchangeStatus").innerHTML =
-    "🎉 おめでとうございます！<br><br>" +
-    "関根コイン30枚達成！<br>" +
-    "🎫 関根グッズ交換券 No." + ticketNo + "<br><br>" +
-    "景品をご希望の方は<br>" +
-    "事務所までお声がけください😊";
+  document.getElementById("exchangeStatus").innerHTML =
+    "🎁✨ 関根グッズ交換所 起動中 ✨🎁<br><br>" +
+    "📢 交換券発行審査中...<br><br>" +
+    "██████████<br><br>" +
+    "🏪 関根商店本部へ確認しています<br><br>" +
+    "🔊 ガチャガチャガチャ……<br>" +
+    "⚡ 発行準備中 ⚡";
 
-    alert("🎫 関根グッズ交換券 No." + ticketNo + " を発行しました！");
-   document.getElementById("exchangeHistory").innerHTML = history;
-    updateDisplay();
+  setTimeout(() => {
 
-  }else{
-    document.getElementById("exchangeStatus").innerHTML =
-    "🟡 コインが足りません<br>" +
-    "コイン30枚で関根グッズ交換券発行";
-  }
+    if(coins >= 30){
+      coins -= 30;
+      localStorage.setItem("sekineCoins", coins);
+
+      let ticketNo = Number(localStorage.getItem("sekineTicketNo") || 0) + 1;
+      localStorage.setItem("sekineTicketNo", ticketNo);
+
+      let history = localStorage.getItem("sekineTicketHistory") || "";
+      history = "🎁 関根グッズ交換券 No." + ticketNo + "<br>" + history;
+      localStorage.setItem("sekineTicketHistory", history);
+
+      document.getElementById("exchangeStatus").innerHTML =
+        "🎊🎊🎊🎊🎊<br>" +
+        "🎁 関根グッズ交換券 発行完了！<br>" +
+        "🎊🎊🎊🎊🎊<br><br>" +
+        "🎫 関根グッズ交換券 No." + ticketNo + "<br><br>" +
+        "🏪 事務所までお声がけください😊";
+
+      document.getElementById("exchangeHistory").innerHTML = history;
+      updateDisplay();
+
+    }else{
+      document.getElementById("exchangeStatus").innerHTML =
+        "🟡 コインが足りません<br><br>" +
+        "必要コイン：30枚<br>" +
+        "現在コイン：" + coins + "枚<br><br>" +
+        "🔥 また明日チャレンジ！";
+    }
+
+  }, 10000);
 }
 function sekineGacha(){
 
