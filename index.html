@@ -177,9 +177,7 @@ style="margin-top:15px;font-size:18px;font-weight:bold;line-height:1.8;">
 <div id="coinCard" style="font-size:30p;">
 ⚪⚪⚪⚪⚪⚪⚪⚪⚪⚪
 </div>
-<p id="exchangeStatus">
-発見した資源をコレクションしよう
-</p>
+
 <div style="font-size:20px;font-weight:bold;margin-top:15px;">
 📔 発見した資源はここに記録されます
 </div>
@@ -193,7 +191,7 @@ style="margin-top:15px;font-size:18px;font-weight:bold;line-height:1.8;">
 <p>
 コインを集めて関根グッズと交換しよう
 </p>
-
+<p id="exchangeStatus"></p>
 <button onclick="exchangeGoods()">
 🎁 関根グッズ交換券を発行
 </button>
@@ -436,10 +434,10 @@ function exchangeGoods(){
 
     }else{
 document.getElementById("exchangeStatus").innerHTML =
-  "<div style='font-size:52px;font-weight:bold;line-height:1.7;margin:20px 0;color:#ff4081;'>" +
+  "<div style='font-size:32px;font-weight:bold;line-height:1.7;margin:20px 0;color:#ff4081;'>" +
   "🟡 コイン不足！" +
   "</div>" +
-  "<div style='font-size:34px;font-weight:bold;line-height:1.9;'>" +
+  "<div style='font-size:22px;font-weight:bold;line-height:1.9;'>" +
   "💰 必要コイン：30枚<br>" +
   "⭐ 現在コイン：" + coins + "枚<br><br>" +
   "🎁 交換券発行まで<br>" +
