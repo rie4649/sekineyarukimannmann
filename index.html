@@ -188,6 +188,18 @@ style="margin-top:15px;font-size:18px;font-weight:bold;line-height:1.8;">
 <div id="exchangeHistoryList">
 まだ資源発見されてません
 </div>
+<button onclick="exchangeGoods()">
+🎁 関根グッズ交換券を発行
+</button>
+
+<p>
+関根コイン10枚で交換券発行
+</p>
+
+<div id="exchangeHistory">
+まだ交換券は発行されていません
+</div>
+</div>
 </div>
 <h3>💳関根ポイントカード</h3>
 🥉500pt　ブリキ級：🎁関根コイン1枚ゲット<br><br>
@@ -380,7 +392,7 @@ setTimeout(() => {
 updateDisplay();
 },5000);
 }
-function exchangeCoin(){
+function exchangeGoods(){
   if(coins >= 15){
     coins -= 15;
     localStorage.setItem("sekineCoins", coins);
