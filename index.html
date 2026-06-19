@@ -180,11 +180,9 @@ style="margin-top:15px;font-size:18px;font-weight:bold;line-height:1.8;">
 <p id="exchangeStatus">
 発見した資源をコレクションしよう
 </p>
-<p>
-<button id="exchangeButton" onclick="exchangeCoin()">
-資料図鑑を見る
-</button>
-</p>
+<div style="font-size:20px;font-weight:bold;margin-top:15px;">
+📔 発見した資源はここに記録されます
+</div>
 <h2>📜 関根資源発見履歴</h2>
 
 <div id="exchangeHistoryList">
@@ -421,7 +419,7 @@ function sekineGacha(){
 
   const r = Math.random();
   let result = "";
-
+let itemName = "";
   document.getElementById("gachaResult").innerHTML =
     "🚨 関根本部許可確認中...<br>" +
     "██████████<br><br>" +
@@ -451,16 +449,24 @@ function sekineGacha(){
       "✨✨✨✨✨<br>" +
       "🎁 宝箱発見！<br>" +
       "✨✨✨✨✨<br><br>" +
-  document.getElementById("gachaResult").innerHTML =
-  "✨✨✨✨✨<br>" +
-  "🎁 宝箱発見！<br>" +
-  "✨✨✨✨✨<br><br>" +
-  "✨ 新資源発見 ✨<br><br>" +
-  "📔 関根資源図鑑に登録しました<br><br>" +
-  "🔍 引き続き調査を続行してください<br><br>" +
-  result;
-      result;
-    updateDisplay();
+let history = localStorage.getItem("sekineHistory") || "";
+
+history = itemName + "<br>" + history;
+
+localStorage.setItem("sekineHistory", history);
+
+document.getElementById("exchangeHistoryList").innerHTML = history;
+
+document.getElementById("gachaResult").innerHTML =
+"✨✨✨✨✨<br>" +
+"🎁 宝箱発見！<br>" +
+"✨✨✨✨✨<br><br>" +
+"✨ 新資源発見 ✨<br><br>" +
+"📔 関根資源図鑑に登録しました<br><br>" +
+"🔍 引き続き調査を続行してください<br><br>" +
+result;
+
+updateDisplay();
   }, 5000);
 }
 function showMission(){
