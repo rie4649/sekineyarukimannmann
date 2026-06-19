@@ -205,17 +205,7 @@ style="margin-top:15px;font-size:18px;font-weight:bold;line-height:1.8;">
 <h3>📋 発行履歴</h3>
 
 <div id="exchangeHistory">
-🎁✨ 関根グッズ交換所へようこそ ✨🎁<br><br>
-
-📢 現在発行された交換券はありません<br><br>
-
-💰 コインを30枚集めると…<br>
-🎫 関根グッズ交換券が発行できます！<br><br>
-
-🏪 関根商店本部より<br>
-交換券発行者募集中！<br><br>
-
-🔥 次の発行者は君だ！ 🔥
+まだ交換券は発行されていません
 </div>
 </div>
 </div>
@@ -422,7 +412,7 @@ function exchangeGoods(){
 
   setTimeout(() => {
 
-    if(coins >= 1){
+    if(coins >= 30){
       coins -= 30;
       localStorage.setItem("sekineCoins", coins);
 
@@ -433,22 +423,29 @@ function exchangeGoods(){
       history = "🎁 関根グッズ交換券 No." + ticketNo + "<br>" + history;
       localStorage.setItem("sekineTicketHistory", history);
 
-      document.getElementById("exchangeStatus").innerHTML =
-        "🎊🎊🎊🎊🎊<br>" +
-        "🎁 関根グッズ交換券 発行完了！<br>" +
-        "🎊🎊🎊🎊🎊<br><br>" +
-        "🎫 関根グッズ交換券 No." + ticketNo + "<br><br>" +
-        "🏪 事務所までお声がけください😊";
-
+    document.getElementById("exchangeStatus").innerHTML =
+  "<div style='font-size:46px;font-weight:bold;line-height:1.7;margin:20px 0;'>" +
+  "🎉 関根グッズ交換券<br>発行完了！ 🎉" +
+  "</div>" +
+  "<div style='font-size:34px;font-weight:bold;line-height:1.8;'>" +
+  "🎫 No." + ticketNo + "<br>" +
+  "🎁 関根グッズ交換券" +
+  "</div>";
       document.getElementById("exchangeHistory").innerHTML = history;
       updateDisplay();
 
     }else{
-      document.getElementById("exchangeStatus").innerHTML =
-        "🟡 コインが足りません<br><br>" +
-        "必要コイン：30枚<br>" +
-        "現在コイン：" + coins + "枚<br><br>" +
-        "🔥 また明日チャレンジ！";
+document.getElementById("exchangeStatus").innerHTML =
+  "<div style='font-size:52px;font-weight:bold;line-height:1.7;margin:20px 0;color:#ff4081;'>" +
+  "🟡 コイン不足！" +
+  "</div>" +
+  "<div style='font-size:34px;font-weight:bold;line-height:1.9;'>" +
+  "💰 必要コイン：30枚<br>" +
+  "⭐ 現在コイン：" + coins + "枚<br><br>" +
+  "🎁 交換券発行まで<br>" +
+  "あと " + (30 - coins) + " 枚！" +
+  "</div>";
+
     }
 
   }, 10000);
