@@ -400,12 +400,33 @@ updateDisplay();
 },5000);
 }
 function exchangeGoods(){
-  alert("ボタンは押せています");
-
   document.getElementById("exchangeStatus").innerHTML =
-    "🎁 交換所チェック中...";
+    "🎁 交換券発行審査中...";
 
+  setTimeout(() => {
+    if(coins >= 30){
+      coins -= 30;
+      localStorage.setItem("sekineCoins", coins);
+
+      let ticketNo = Number(localStorage.getItem("sekineTicketNo") || 0) + 1;
+      localStorage.setItem("sekineTicketNo", ticketNo);
+
+      let history = localStorage.getItem("sekineTicketHistory") || "";
+      history = "🎁 関根グッズ交換券 No." + ticketNo + "<br>" + history;
+      localStorage.setItem("sekineTicketHistory", history);
+
+      document.getElementById("exchangeStatus").innerHTML =
+        "🎉 関根グッズ交換券<br>発行完了！<br>🎫 No." + ticketNo;
+
+      document.getElementById("exchangeHistory").innerHTML = history;
+      updateDisplay();
+    }else{
+      document.getElementById("exchangeStatus").innerHTML =
+        "🟡 コイン不足！<br>必要コイン：30枚<br>現在コイン：" + coins + "枚<br>あと" + (30 - coins) + "枚";
+    }
+  }, 3000);
 }
+
 function sekineGacha(){
 
   if(coins < 15){
