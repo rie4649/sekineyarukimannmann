@@ -400,14 +400,13 @@ updateDisplay();
 }
 function exchangeGoods(){
 
-  document.getElementById("exchangeStatus").innerHTML =
-    "🎁✨ 関根グッズ交換所 起動中 ✨🎁<br><br>" +
-    "📢 交換券発行審査中...<br><br>" +
-    "██████████<br><br>" +
-    "🏪 関根商店本部へ確認しています<br><br>" +
-    "🔊 ガチャガチャガチャ……<br>" +
-    "⚡ 発行準備中 ⚡";
-
+document.getElementById("exchangeStatus").innerHTML =
+  "<div style='font-size:34px;font-weight:bold;line-height:1.8;margin:20px 0;'>" +
+  "🎁✨ 関根グッズ交換所 起動中 ✨🎁<br><br>" +
+  "📢 交換券発行審査中...<br><br>" +
+  "🔊 ガチャガチャガチャ……<br><br>" +
+  "⚡ 発行準備中 ⚡" +
+  "</div>";
   setTimeout(() => {
 
     if(coins >= 30){
