@@ -425,8 +425,9 @@ document.getElementById("result").innerHTML =
 "<div style='font-size:28px;color:#ff4081;font-weight:bold;margin-top:18px;'>あと " + (30 - coins) + " 枚で交換券ゲット！</div>" +
 "<div style='font-size:26px;margin-top:18px;'>💰 現在コイン：" + coins + "枚</div>";
 
-document.getElementById("result").scrollIntoView({
- behavior:"smooth"
+window.scrollTo({
+  top: document.getElementById("result").offsetTop - 80,
+  behavior: "smooth"
 });
 },3000);
 setTimeout(() => {
