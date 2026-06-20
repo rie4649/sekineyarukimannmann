@@ -273,7 +273,6 @@ function prizeText(pt){
   return "👶 関根見習い";
 }
 function updateDisplay(){
-coins = Number(localStorage.getItem("sekineCoins") || 0);
 document.getElementById("coins").innerHTML="現在コイン："+coins+"枚"; 
 document.getElementById("points").innerHTML="現在ポイント："+points+"pt";
 document.getElementById("rank").innerHTML=getRank(points);
