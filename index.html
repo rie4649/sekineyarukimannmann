@@ -246,7 +246,7 @@ const bonuses=[
 let points=parseInt(localStorage.getItem("sekinePoints")||"0");
 let coins=parseInt(localStorage.getItem("sekineCoins")||"0");
 function todayKey(){const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
-function getRank(pt){
+
  function getRank(pt){
  if(pt>=3000) return "👑 CU級";
  if(pt>=1800) return "⭐ BS級";
