@@ -443,10 +443,17 @@ updateDisplay();
 }
 function sekineGacha(){
 
-  if(coins < 15){
-    alert("コインが足りません🥲");
-    return;
-  }
+if(coins < 15){
+
+document.getElementById("gachaResult").innerHTML =
+"🚫 関根本部よりお知らせ<br><br>" +
+"コイン不足のため秘宝庫は開けません🥲<br><br>" +
+"🔑 必要コイン：15枚<br>" +
+"💰 現在コイン：" + coins + "枚<br><br>" +
+"あと " + (15 - coins) + " 枚で挑戦可能！";
+
+return;
+}
 
   coins -= 15;
   localStorage.setItem("sekineCoins", coins);
