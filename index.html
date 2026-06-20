@@ -150,7 +150,7 @@ word-break:break-all;
 必要コイン15枚でチャレンジ可能
 </div>
 
-<button onclick="sekineGacha()"
+<button onclick="openTreasureAlert()"
 style="
 font-size:22px;
 padding:16px 30px;
@@ -876,8 +876,18 @@ function showSugorokuBoard(){
 
 
   document.getElementById("sugorokuBoard").innerHTML = board;
-
+}
+}
+function openTreasureAlert() {
+  document.getElementById("treasureAlert").style.display = "block";
 }
 </script>
+<div id="treasureAlert" style="
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.88);
+z-index:9999;">
+</div>
 </body>
 </html>
