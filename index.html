@@ -247,31 +247,47 @@ let points=parseInt(localStorage.getItem("sekinePoints")||"0");
 let coins=parseInt(localStorage.getItem("sekineCoins")||"0");
 function todayKey(){const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
 function getRank(pt){
-  if(pt>=5000) return "👑 CU級";
-  if(pt>=3000) return "🏆 BS級";
-  if(pt>=1500) return "🥉 鉄A級";
-  if(pt>=1000) return "🥈 ギロ級";
-  if(pt>=500) return "🥉 ブリキ級";
-  return "👶 関根見習い";
+ function getRank(pt){
+ if(pt>=3000) return "👑 CU級";
+ if(pt>=1800) return "⭐ BS級";
+ if(pt>=1300) return "🪽 アルミ級";
+ if(pt>=900) return "🚀 チタン級";
+ if(pt>=600) return "🛡️ ステンレス級";
+ if(pt>=400) return "✨ クローム級";
+ if(pt>=250) return "⚙️ 鉄A級";
+ if(pt>=150) return "⛰️ 甲山級";
+ if(pt>=100) return "🔩 ギロ級";
+ if(pt>=50) return "🥉 ブリキ級";
+ return "👶 関根見習い";
 }
 
 function nextGoal(pt){
-  if(pt<500) return 500;
-  if(pt<1000) return 1000;
-  if(pt<1500) return 1500;
-  if(pt<3000) return 3000;
-  if(pt<5000) return 5000;
-  return 5000;
+ if(pt<50) return 50;
+ if(pt<100) return 100;
+ if(pt<150) return 150;
+ if(pt<250) return 250;
+ if(pt<400) return 400;
+ if(pt<600) return 600;
+ if(pt<900) return 900;
+ if(pt<1300) return 1300;
+ if(pt<1800) return 1800;
+ if(pt<3000) return 3000;
+ return 3000;
 }
 
 function prizeText(pt){
-  if(pt>=5000) return "👑 CU級達成！関根コイン10枚ゲット＆お味噌汁追加券ゲット！";
-  if(pt>=3000) return "🏆 BS級達成！関根コイン4枚ゲット！";
-  if(pt>=1500) return "🥉 鉄A級達成！関根コイン3枚ゲット！";
-  if(pt>=1000) return "🥈 ギロ級達成！関根コイン2枚ゲット！";
-  if(pt>=500) return "🥉 ブリキ級達成！関根コイン1枚ゲット！";
-  return "👶 関根見習い";
-}
+ if(pt>=3000) return "👑 CU級<br>🏆 昇進おめでとう！<br>🎁 関根グッズ交換所 解禁！<br>🪙 関根コインゲット！ +20<br>関根商店本部より感謝状を授与します";
+ if(pt>=1800) return "⭐ BS級<br>🪙 関根コインゲット！ +5";
+ if(pt>=1300) return "🪽 アルミ級<br>🪙 関根コインゲット！ +5";
+ if(pt>=900) return "🚀 チタン級<br>🪙 関根コインゲット！ +5";
+ if(pt>=600) return "🛡️ ステンレス級<br>🪙 関根コインゲット！ +3";
+ if(pt>=400) return "✨ クローム級<br>🪙 関根コインゲット！ +3";
+ if(pt>=250) return "⚙️ 鉄A級<br>🪙 関根コインゲット！ +2";
+ if(pt>=150) return "⛰️ 甲山級<br>🪙 関根コインゲット！ +2";
+ if(pt>=100) return "🔩 ギロ級<br>🪙 関根コインゲット！ +1";
+ if(pt>=50) return "🥉 ブリキ級<br>🪙 関根コインゲット！ +1";
+ return "👶 関根見習い";
+}  
 function updateDisplay(){
 points = Number(localStorage.getItem("sekinePoints") || 0);
 coins = Number(localStorage.getItem("sekineCoins") || 0);
@@ -328,14 +344,24 @@ if(fortune.title.includes("超大吉")){
   alert("🎉🎉🎉 超大吉！！関根フィーバー発動！！ 🎉🎉🎉");
 }
 
-const oldCoins=Math.floor((points-gain)/500);
-  
- const newCoins=Math.floor(points/500); 
+let rewardCoins = 0;
 
-  if(newCoins>oldCoins){
-    coins+=newCoins-oldCoins;
-    localStorage.setItem("sekineCoins",coins);
-  }
+if(points >= 3000 && (points - gain) < 3000) rewardCoins = 20;
+else if(points >= 1800 && (points - gain) < 1800) rewardCoins = 5;
+else if(points >= 1300 && (points - gain) < 1300) rewardCoins = 5;
+else if(points >= 900 && (points - gain) < 900) rewardCoins = 5;
+else if(points >= 600 && (points - gain) < 600) rewardCoins = 3;
+else if(points >= 400 && (points - gain) < 400) rewardCoins = 3;
+else if(points >= 250 && (points - gain) < 250) rewardCoins = 2;
+else if(points >= 150 && (points - gain) < 150) rewardCoins = 2;
+else if(points >= 100 && (points - gain) < 100) rewardCoins = 1;
+else if(points >= 50 && (points - gain) < 50) rewardCoins = 1;
+
+if(rewardCoins > 0){
+  coins += rewardCoins;
+  localStorage.setItem("sekineCoins", coins);
+}
+
 
   localStorage.setItem("sekinePoints",points);
   //localStorage.setItem("sekineLastDraw",todayKey());
