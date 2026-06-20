@@ -400,7 +400,8 @@ updateDisplay();
 },5000);
 }
 function exchangeGoods(){
-if(coins < 30){
+coins = Number(localStorage.getItem("sekineCoins") || 0);
+  if(coins < 30){
   document.getElementById("exchangeStatus").innerHTML =
   "🟡 コイン不足！<br>必要コイン：30枚<br>現在コイン：" + coins + "枚<br>あと" + (30 - coins) + "枚";
   return;
