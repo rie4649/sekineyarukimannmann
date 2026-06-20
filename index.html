@@ -415,7 +415,10 @@ document.getElementById("exchangeStatus").innerHTML =
 "████▒▒▒▒▒▒<br><br>" +
 "😆 あと " + (30 - coins) + " 枚で交換券ゲット！<br>" +
 "💰現在コイン：" + coins + "枚";
-return;
+setTimeout(() => {
+  document.getElementById("exchangeStatus").innerHTML = "";
+}, 6000);
+  return;
 }
 
 document.getElementById("exchangeStatus").innerHTML =
