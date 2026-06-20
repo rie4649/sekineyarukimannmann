@@ -410,44 +410,37 @@ coins = Number(localStorage.getItem("sekineCoins") || 0);
 
 if(coins < 30){
 document.getElementById("exchangeStatus").innerHTML =
-"😆 あと " + (30 - coins) + " 枚で交換券ゲット！<br>💰現在コイン：" + coins + "枚";
+"🎪 関根グッズ交換所 審査中...<br><br>" +
+"🔐 コイン枚数を確認しています...<br>" +
+"████▒▒▒▒▒▒<br><br>" +
+"😆 あと " + (30 - coins) + " 枚で交換券ゲット！<br>" +
+"💰現在コイン：" + coins + "枚";
 return;
 }
-}
- 
-  document.getElementById("exchangeStatus").innerHTML =
-    "🎁 交換券発行審査中...";
+
+document.getElementById("exchangeStatus").innerHTML =
+"🎁 交換券発行審査中...<br><br>🔐 通信中...<br>██████████";
 
 setTimeout(() => {
 
-    if(coins >= 30){
+coins -= 30;
+localStorage.setItem("sekineCoins", coins);
 
-        coins -= 30;
-        localStorage.setItem("sekineCoins", coins);
+let ticketNo = Number(localStorage.getItem("sekineTicketNo") || 0) + 1;
+localStorage.setItem("sekineTicketNo", ticketNo);
 
-        let ticketNo = Number(localStorage.getItem("sekineTicketNo") || 0) + 1;
-        localStorage.setItem("sekineTicketNo", ticketNo);
+let history = localStorage.getItem("sekineTicketHistory") || "";
+history = "🎁 関根グッズ交換券 No." + ticketNo + "<br>" + history;
+localStorage.setItem("sekineTicketHistory", history);
 
-        let history = localStorage.getItem("sekineTicketHistory") || "";
-        history = "🎁 関根グッズ交換券 No." + ticketNo + "<br>" + history;
-        localStorage.setItem("sekineTicketHistory", history);
-
-  document.getElementById("exchangeStatus").innerHTML =
-"交換券発行完了 No." + ticketNo;
+document.getElementById("exchangeStatus").innerHTML =
+"🎊 交換券発行完了！<br>🎁 No." + ticketNo;
 
 document.getElementById("exchangeHistory").innerHTML = history;
-document.getElementById("exchangeHistoryList").innerHTML = "まだ資源発見されてません";
-        updateDisplay();
-
-    }else{
-
-        document.getElementById("exchangeStatus").innerHTML =
-        "🟡 コイン不足！<br>必要コイン：30枚<br>現在コイン：" + coins + "枚<br>あと" + (30 - coins) + "枚";
-    }
+updateDisplay();
 
 }, 3000);
 }
-
 function sekineGacha(){
 
   if(coins < 15){
