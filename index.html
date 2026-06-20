@@ -304,7 +304,7 @@ const goal=nextGoal(points);const remain=Math.max(goal-points,0);
 document.getElementById("nextRank").innerHTML=points>=5000?"👑最高ランク達成中！":"次のランクまで "+remain+"pt";
 document.getElementById("bar").style.width=(points>=5000?100:Math.min((points/goal)*100,100))+"%";
 document.getElementById("exchangeHistoryList").innerHTML =
-localStorage.getItem("sekineHistory") || "まだ交換履歴はありません";
+"まだ資源発見されてません";
 document.getElementById("exchangeHistory").innerHTML =
 localStorage.getItem("sekineTicketHistory") || "まだ交換券は発行されていません";
 const lastDraw=localStorage.getItem("sekineLastDraw");
