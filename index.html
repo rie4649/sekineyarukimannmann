@@ -190,7 +190,7 @@ style="margin-top:15px;font-size:18px;font-weight:bold;line-height:1.8;">
 
 
 <div class="card">
-<h2>🎁 関根グッズ交換所</h2>
+<h2>🎁 関根グッズ抽選に挑戦</h2>
 
 <p>コインを集めて関根グッズと交換しよう</p>
 
@@ -446,65 +446,69 @@ function exchangeGoods(){
 coins = Number(localStorage.getItem("sekineCoins") || 0);
 
 if(coins < 30){
-
-document.getElementById("result").innerHTML =
-"<div style='position:fixed;top:0;left:0;width:100%;height:100%;background:white;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;'>" +
-"<div style='font-size:34px;font-weight:bold;color:#ff4081;line-height:1.5;'>関根グッズ交換所に<br>問い合わせ中</div>" +
-"<div style='font-size:70px;margin-top:40px;'>🎁</div>" +
-"<div style='font-size:42px;font-weight:bold;margin-top:20px;'>審査中...</div>" +
-"<div style='font-size:28px;font-weight:bold;color:#666;margin-top:30px;'>コイン枚数を確認しています</div>" +
-"</div>";
-
-setTimeout(() => {
-document.getElementById("result").innerHTML =
-"<div style='position:fixed;top:0;left:0;width:100%;height:100%;background:white;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;box-sizing:border-box;'>" +
-
-"<div style='font-size:34px;font-weight:bold;'>🎁 交換券審査結果</div>" +
-
-"<div style='font-size:28px;line-height:1.8;margin-top:20px;'>今回はコイン不足です🥲</div>" +
-
-"<div style='font-size:32px;color:#ff4081;font-weight:bold;margin-top:25px;'>あと " +
-(30 - coins) +
-" 枚で交換券ゲット！</div>" +
-
-"<div style='font-size:26px;margin-top:25px;'>💰 現在コイン：" +
-coins +
-"枚</div>" +
-
-"</div>";
-window.scrollTo({
-  top: document.getElementById("result").offsetTop - 80,
-  behavior: "smooth"
-});
-},3000);
-setTimeout(() => {
- document.getElementById("result").innerHTML =
- "✨ポイントをためて毎日元気に過ごしましょう✨";
- updateDisplay();
-},10000);
+document.getElementById("exchangeStatus").innerHTML =
+"🥲 コイン不足です<br><br>あと " + (30 - coins) + " 枚で抽選できます";
 return;
 }
-
-
-document.getElementById("exchangeStatus").innerHTML =
-"🎁 交換券発行審査中...<br><br>🔐 通信中...<br>██████████";
-
-setTimeout(() => {
 
 coins -= 30;
 localStorage.setItem("sekineCoins", coins);
 
+document.getElementById("exchangeStatus").innerHTML =
+"🎁 関根グッズ抽選中...<br><br>🔐 ガラガラ中...<br>██████████";
+
+setTimeout(() => {
+
+const r = Math.random();
+let result = "";
+let history = localStorage.getItem("sekineTicketHistory") || "";
+
+if(r < 0.10){
+
 let ticketNo = Number(localStorage.getItem("sekineTicketNo") || 0) + 1;
 localStorage.setItem("sekineTicketNo", ticketNo);
 
-let history = localStorage.getItem("sekineTicketHistory") || "";
-history = "🎁 関根グッズ交換券 No." + ticketNo + "<br>" + history;
+result =
+"🎊🎊🎊 大当たり 🎊🎊🎊<br><br>" +
+"👑 スペシャル賞！<br><br>" +
+"🎁 関根オリジナルグッズ交換券 No." + ticketNo + " 発行！";
+
+history =
+"👑 スペシャル賞：関根オリジナルグッズ交換券 No." + ticketNo + "<br>" + history;
+
 localStorage.setItem("sekineTicketHistory", history);
 
-document.getElementById("exchangeStatus").innerHTML =
-"🎊 交換券発行完了！<br>🎁 No." + ticketNo;
+}else if(r < 0.40){
 
+result =
+"🤣 ハズレ<br><br>" +
+"参加賞：関根本部より<br>気持ちだけ贈呈されました";
+
+history = "🤣 ハズレ：気持ちだけ贈呈<br>" + history;
+
+}else if(r < 0.70){
+
+result =
+"🥲 ハズレ<br><br>" +
+"今回は空箱でした<br>でも夢は入っていました";
+
+history = "🥲 ハズレ：空箱<br>" + history;
+
+}else{
+
+result =
+"😎 ハズレ<br><br>" +
+"関根審査会により<br>今回は見送りとなりました";
+
+history = "😎 ハズレ：審査見送り<br>" + history;
+
+}
+
+localStorage.setItem("sekineTicketHistory", history);
+
+document.getElementById("exchangeStatus").innerHTML = result;
 document.getElementById("exchangeHistory").innerHTML = history;
+
 updateDisplay();
 
 }, 3000);
