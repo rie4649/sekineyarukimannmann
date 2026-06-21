@@ -1074,13 +1074,11 @@ const healthMessages = [
 
 ];
 
-let healthPoint =
-Number(localStorage.getItem("healthPoint")) || 0;
+points = Number(localStorage.getItem("sekinePoints") || 0);
 
-healthPoint += 1;
+points += 1;
 
-localStorage.setItem("healthPoint", healthPoint);
-
+localStorage.setItem("sekinePoints", points);
 const result =
 healthMessages[Math.floor(Math.random()*healthMessages.length)];
 document.getElementById("result").innerHTML =
