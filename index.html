@@ -1079,7 +1079,8 @@ points = Number(localStorage.getItem("sekinePoints") || 0);
 points += 1;
 
 localStorage.setItem("sekinePoints", points);
-const result =
+updateDisplay();
+  const result =
 healthMessages[Math.floor(Math.random()*healthMessages.length)];
 document.getElementById("result").innerHTML =
 
