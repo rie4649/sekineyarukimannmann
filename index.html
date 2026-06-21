@@ -131,9 +131,19 @@ word-break:break-all;
 <div id="result" class="card" style="font-size:14px;">
 ✨健康ポイントを貯めて元気に過ごそう✨
 </div>
-
 <div class="card">
-<h2>関根商店健康センター</h2>
+
+<h2>🏥 関根商店健康センター</h2>
+
+<p>健康ポイントを貯めて元気に過ごそう✨</p>
+
+<button onclick="healthCheck()">
+🏥 健康診断をする
+</button>
+
+</div>
+<div class="card">
+<h2>関根商店ポイントを貯める</h2>
 <div id="points" class="big">現在ポイント：0pt</div>
 <div id="rank" class="rank">👶関根見習い👶</div>
 <div class="progress"><div id="bar" class="bar"></div></div>
@@ -142,9 +152,7 @@ word-break:break-all;
 ☆☆☆☆☆
 <br>
 
-<button onclick="healthCheck()">
-🏥 健康診断をする
-</button>
+
 </div>
 </div>
 
@@ -1011,7 +1019,108 @@ function showSugorokuBoard(){
 
   document.getElementById("sugorokuBoard").innerHTML = board;
 }
+function healthCheck(){
+const healthMessages = [
 
+"🥬 野菜不足の可能性があります<br><br>昨日ラーメンを食べた人は特に注意してください🤣",
+
+"🥤 水分不足の可能性があります<br><br>コーヒーだけでは回復しません☕",
+
+"😴 睡眠不足の可能性があります<br><br>昨日の就寝時間を思い出してください🤣",
+
+"🚶 運動不足の可能性があります<br><br>トイレまで遠回りしてみましょう✨",
+
+"🧘 肩こり注意報発令中<br><br>肩を3回まわしてみましょう",
+
+"😊 笑顔不足の可能性があります<br><br>今日は1回だけニヤニヤしましょう🤣",
+
+"☀️ 日光不足の可能性があります<br><br>外の空気を吸ってみましょう",
+
+"🍎 ビタミン不足の可能性があります<br><br>果物を思い出してください",
+
+"🥛 カルシウム不足の可能性があります<br><br>牛乳かヨーグルトをどうぞ",
+
+"👀 目の使いすぎ注意報<br><br>遠くの山を見てみましょう",
+
+"📱 スマホ見すぎ注意報<br><br>今この画面を見ている人も対象です🤣",
+
+"🦵 足腰応援キャンペーン中<br><br>立ったついでに伸びをしましょう",
+
+"💧 むくみ警報発令中<br><br>足首をぐるぐる回しましょう",
+
+"🥗 食物繊維不足の可能性があります<br><br>野菜が逃げています🥬",
+
+"🍺 飲みすぎ注意報<br><br>未来の自分と相談してください🤣",
+
+"🫀 心の余裕不足かもしれません<br><br>深呼吸を3回どうぞ",
+
+"😆 笑い不足の可能性があります<br><br>昭和ギャグを1つ思い出してください",
+
+"☕ 休憩不足の可能性があります<br><br>5分だけ一息つきましょう",
+
+"🚰 水筒放置警報発令中<br><br>中身を確認してください🤣",
+
+"🦴 ストレッチ不足の可能性があります<br><br>アキレス腱を伸ばしましょう",
+
+"🥱 お疲れモード検出<br><br>今日は自分を褒めてください✨",
+
+"🌈 元気不足の可能性があります<br><br>好きな音楽を1曲どうぞ",
+
+"📺 座りすぎ注意報<br><br>30秒だけ立ちましょう",
+
+"🍵 お茶がおいしい日です<br><br>健康センターもおすすめします",
+
+"💯 本日の診断結果<br><br>特に異常ありません🤣"
+
+];
+
+let healthPoint =
+Number(localStorage.getItem("healthPoint")) || 0;
+
+healthPoint += 1;
+
+localStorage.setItem("healthPoint", healthPoint);
+
+const result =
+healthMessages[Math.floor(Math.random()*healthMessages.length)];
+document.getElementById("result").innerHTML =
+
+"<div style='position:fixed;top:0;left:0;width:100%;height:100%;background:white;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;'>" +
+
+"<div style='font-size:90px;'>🏥</div>" +
+
+"<div style='font-size:34px;font-weight:bold;color:#ff4081;'>関根商店健康センター</div>" +
+
+"<div style='font-size:28px;margin-top:30px;'>診断中...</div>" +
+
+"<div style='font-size:26px;margin-top:20px;'>🩺 検査しています</div>" +
+
+"</div>";
+setTimeout(() => {
+
+document.getElementById("result").innerHTML =
+
+"<div style='position:fixed;top:0;left:0;width:100%;height:100%;background:white;z-index:9999;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;'>" +
+
+"<div style='font-size:90px;'>📋</div>" +
+
+"<div style='font-size:38px;font-weight:bold;color:#16a34a;'>本日の診断結果</div>" +
+
+"<div style='font-size:30px;line-height:1.8;margin-top:30px;max-width:90%;'>" +
+
+result +
+
+"</div>" +
+
+"<div style='font-size:26px;color:#ff9800;margin-top:30px;'>🏅 健康ポイント +1</div>" +
+
+"</div>";
+
+},3000);
+setTimeout(() => {
+location.reload();
+},10000);
+}
 </script>
 </body>
 </html>
