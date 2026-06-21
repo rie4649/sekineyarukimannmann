@@ -702,8 +702,46 @@ const missions = [
 
 
 if(lastMission === today){
-  alert("😎 何度も押してもダメ！\nまた明日挑戦ね！");
-  return;
+
+document.getElementById("result").innerHTML =
+"<div style='position:fixed;top:0;left:0;width:100%;height:100%;background:black;color:white;z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;'>" +
+
+"<div style='font-size:100px;'>🚨</div>" +
+
+"<div style='font-size:42px;font-weight:bold;color:red;'>関根商店本部より緊急連絡</div>" +
+
+"<div style='font-size:30px;margin-top:30px;'>極秘指令システム確認中...</div>" +
+
+"<div style='font-size:26px;margin-top:20px;'>██████████</div>" +
+
+"</div>";
+
+setTimeout(() => {
+
+document.getElementById("result").innerHTML =
+
+"<div style='position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,#2b0000,#000);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:30px;color:white;'>" +
+
+"<div style='font-size:100px;'>🔐</div>" +
+
+"<div style='font-size:46px;font-weight:bold;color:#ff5252;'>指令ロック中</div>" +
+
+"<div style='font-size:32px;line-height:1.8;margin-top:25px;'>本日の極秘指令は<br>既に開封済みですよ🚧</div>" +
+
+"<div style='font-size:30px;color:#ffd700;font-weight:bold;margin-top:25px;'>また明日配信予定</div>" +
+
+"<div style='font-size:28px;margin-top:25px;'>お楽しみに✨</div>" +
+
+"</div>";
+
+},3000);
+
+setTimeout(() => {
+document.getElementById("result").innerHTML =
+"✨ポイントをためて毎日元気に過ごしましょう✨";
+},10000);
+
+return;
 }
 
 const mission =
