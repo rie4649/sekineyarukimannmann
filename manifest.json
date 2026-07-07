@@ -1,1 +1,12 @@
-
+{
+  "name": "関根商店 やる気スイッチおみくじ",
+  "short_name": "やる気スイッチ",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#c5d8ff",
+  "theme_color": "#1e3a8a",
+  "icons": [
+    { "src": "omikuji-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "omikuji-icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
